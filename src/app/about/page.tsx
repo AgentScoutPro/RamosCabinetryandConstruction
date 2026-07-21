@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { business } from "@/lib/site-data";
+import Image from "next/image";
+import { business, projects } from "@/lib/site-data";
 import { PageHero, CTABand, Eyebrow, TrustBar } from "@/components/Sections";
 
 export const metadata: Metadata = {
@@ -20,8 +21,16 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-4">
-          <div className="aspect-[3/4] bg-gradient-to-b from-[#4a3624] to-[#241a13] border border-line flex items-end p-6">
-            <div>
+          <div className="relative aspect-[3/4] border border-line overflow-hidden">
+            <Image
+              src={projects.find((p) => p.slug === "raw-lumber-material")!.image}
+              alt="Raw hardwood lumber staged in the truck bed, ready for custom cabinetry"
+              fill
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-walnut/90 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6">
               <div className="text-brass-light text-xs tracking-[0.2em] uppercase">Owner &amp; Lead Craftsman</div>
               <div className="font-display text-cream text-xl mt-2">Chris Ramos</div>
             </div>

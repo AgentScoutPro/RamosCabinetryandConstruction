@@ -24,6 +24,82 @@ export const serviceAreas = [
   "Phoenix",
 ];
 
+export type Project = {
+  slug: string;
+  image: string;
+  title: string;
+  alt: string;
+  city: string;
+  tag: string;
+};
+
+export const projects: Project[] = [
+  {
+    slug: "river-table-island",
+    image: "/images/gallery/river-table-island-kitchen.jpg",
+    title: "Live-Edge Walnut Island with Blue River Inlay",
+    alt: "Custom live-edge walnut kitchen island with blue epoxy river inlay, East Valley AZ",
+    city: "East Valley, AZ",
+    tag: "Custom Cabinets · Kitchen",
+  },
+  {
+    slug: "wet-bar-built-in",
+    image: "/images/gallery/wet-bar-built-in.jpg",
+    title: "Light Oak Wet Bar with Wine Storage",
+    alt: "Custom light oak wet bar built-in with open shelving and wine fridge, East Valley AZ",
+    city: "East Valley, AZ",
+    tag: "Custom Cabinets · Built-Ins",
+  },
+  {
+    slug: "navy-media-wall",
+    image: "/images/gallery/navy-media-wall.jpg",
+    title: "Navy Media Wall with Reclaimed Wood Surround",
+    alt: "Custom navy blue built-in media wall with reclaimed wood surround and wine fridge, East Valley AZ",
+    city: "East Valley, AZ",
+    tag: "Finish Carpentry · Built-Ins",
+  },
+  {
+    slug: "laundry-built-ins",
+    image: "/images/gallery/laundry-built-ins.jpg",
+    title: "Laundry Room Cabinetry with Quartz Counter",
+    alt: "Custom light wood laundry room cabinetry with quartz countertop and farmhouse sink, East Valley AZ",
+    city: "East Valley, AZ",
+    tag: "Custom Cabinets · Laundry",
+  },
+  {
+    slug: "cream-vanity",
+    image: "/images/gallery/cream-vanity.jpg",
+    title: "Cream Shaker Vanity with Quartz Top",
+    alt: "Custom cream shaker bathroom vanity with quartz countertop, East Valley AZ",
+    city: "East Valley, AZ",
+    tag: "Bathroom Remodeling",
+  },
+  {
+    slug: "vanity-boxes-install",
+    image: "/images/gallery/vanity-boxes-install.jpg",
+    title: "Charcoal Vanity Cabinetry, Mid-Install",
+    alt: "Charcoal shaker cabinet boxes during bathroom vanity installation, East Valley AZ",
+    city: "East Valley, AZ",
+    tag: "Cabinet Installation",
+  },
+  {
+    slug: "bathroom-tile-install",
+    image: "/images/gallery/bathroom-tile-install.jpg",
+    title: "Bathroom Cabinetry & Tile Coordination",
+    alt: "Floating bathroom vanity cabinetry during tile installation, East Valley AZ",
+    city: "East Valley, AZ",
+    tag: "Bathroom Remodeling",
+  },
+  {
+    slug: "raw-lumber-material",
+    image: "/images/gallery/raw-lumber-material.jpg",
+    title: "Raw Lumber, Ready for the Shop",
+    alt: "Raw hardwood lumber board staged for custom cabinetry fabrication",
+    city: "East Valley, AZ",
+    tag: "Materials & Process",
+  },
+];
+
 export type Service = {
   slug: string;
   name: string;
