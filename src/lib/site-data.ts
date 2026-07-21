@@ -123,9 +123,9 @@ export const services: Service[] = [
     eyebrow: "Custom & Semi-Custom Cabinetry",
     heroHeadline: "Cabinets Built for Your Space, Not Off a Shelf",
     heroSub:
-      "Every cabinet Chris builds is measured, drawn, and joined for the exact room it's going into — kitchens, bathrooms, laundry rooms, built-ins, and everything between.",
+      "Every cabinet Chris builds is measured, drawn, and joined for the exact room it's going into: kitchens, bathrooms, laundry rooms, built-ins, and everything between.",
     overview:
-      "Stock cabinetry forces your kitchen to fit the box. Custom cabinetry does the opposite — the box fits your kitchen. Ramos Cabinetry & Construction designs and builds custom and semi-custom cabinets for East Valley homeowners who want storage, proportion, and finish work that actually matches the way they live and cook.",
+      "Stock cabinetry forces your kitchen to fit the box. Custom cabinetry does the opposite: the box fits your kitchen. Ramos Cabinetry & Construction designs and builds custom and semi-custom cabinets for East Valley homeowners who want storage, proportion, and finish work that actually matches the way they live and cook.",
     problems: [
       {
         title: "Awkward layouts and dead corners",
@@ -151,7 +151,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "What's the difference between custom and semi-custom cabinets?",
-        a: "Custom cabinets are built entirely to your dimensions and design. Semi-custom starts from established cabinet boxes with more flexibility on sizing, finishes, and storage inserts — a great option when you want a tailored look on a tighter timeline or budget.",
+        a: "Custom cabinets are built entirely to your dimensions and design. Semi-custom starts from established cabinet boxes with more flexibility on sizing, finishes, and storage inserts, a great option when you want a tailored look on a tighter timeline or budget.",
       },
       {
         q: "How long does a custom cabinet project take?",
@@ -159,7 +159,7 @@ export const services: Service[] = [
       },
       {
         q: "Do you build cabinets for rooms besides the kitchen?",
-        a: "Yes — bathrooms, laundry rooms, mudrooms, home offices, entertainment centers, and closet built-ins are all part of what we do.",
+        a: "Yes, bathrooms, laundry rooms, mudrooms, home offices, entertainment centers, and closet built-ins are all part of what we do.",
       },
       {
         q: "Do you offer free estimates?",
@@ -175,9 +175,9 @@ export const services: Service[] = [
     eyebrow: "Full Kitchen Remodeling",
     heroHeadline: "A Kitchen Remodel Led by the Person Building It",
     heroSub:
-      "From cabinetry to counters to finish carpentry, Chris Ramos manages your kitchen remodel start to finish — no subcontracted guesswork, no vanishing point of contact.",
+      "From cabinetry to counters to finish carpentry, Chris Ramos manages your kitchen remodel start to finish, with no subcontracted guesswork and no vanishing point of contact.",
     overview:
-      "A kitchen remodel touches nearly everything in a home — cabinetry, counters, lighting, layout, and flow. Ramos Cabinetry & Construction handles the full scope for East Valley homeowners, with cabinetry and finish carpentry built in-house and every other trade coordinated directly by Chris.",
+      "A kitchen remodel touches nearly everything in a home: cabinetry, counters, lighting, layout, and flow. Ramos Cabinetry & Construction handles the full scope for East Valley homeowners, with cabinetry and finish carpentry built in-house and every other trade coordinated directly by Chris.",
     problems: [
       {
         title: "Not enough storage or counter space",
@@ -203,7 +203,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Can you update bathroom vanities and storage?",
-        a: "That's part of our bathroom remodeling service — see that page for details, but yes, vanity and storage work is common alongside kitchen projects.",
+        a: "That's part of our bathroom remodeling service. See that page for details, but yes, vanity and storage work is common alongside kitchen projects.",
       },
       {
         q: "Do you handle plumbing and electrical during a kitchen remodel?",
@@ -215,7 +215,7 @@ export const services: Service[] = [
       },
       {
         q: "Do you offer free estimates?",
-        a: "Yes — call 480-358-8607 or request one online and we'll schedule an in-home consultation.",
+        a: "Yes, call 480-358-8607 or request one online and we'll schedule an in-home consultation.",
       },
     ],
   },
@@ -227,7 +227,7 @@ export const services: Service[] = [
     eyebrow: "Bathroom Remodeling & Vanities",
     heroHeadline: "Bathrooms Rebuilt Around Better Storage and Finish Work",
     heroSub:
-      "Custom vanities, cabinetry, and finish carpentry that make a small room feel considered — not an afterthought bolted on during a kitchen job.",
+      "Custom vanities, cabinetry, and finish carpentry that make a small room feel considered, not an afterthought bolted on during a kitchen job.",
     overview:
       "Bathrooms live and die by storage and finish detail. Ramos Cabinetry & Construction builds custom vanities and cabinetry, then finishes the space with the same carpentry standard we bring to every other room, for homeowners across Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix.",
     problems: [
@@ -255,7 +255,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Can you update bathroom vanities and storage?",
-        a: "Yes — custom vanity design and storage-focused cabinetry are core to this service.",
+        a: "Yes, custom vanity design and storage-focused cabinetry are core to this service.",
       },
       {
         q: "Do you handle finish carpentry in bathroom projects?",
@@ -323,7 +323,7 @@ export const services: Service[] = [
       },
       {
         q: "Do you offer free estimates?",
-        a: "Yes — call 480-358-8607 or request one online.",
+        a: "Yes, call 480-358-8607 or request one online.",
       },
     ],
   },
@@ -335,7 +335,7 @@ export const services: Service[] = [
     eyebrow: "Trim, Millwork & Detail Carpentry",
     heroHeadline: "The Detail Work That Makes a Room Feel Finished",
     heroSub:
-      "Trim, crown, wainscoting, built-ins, and custom millwork — the carpentry details that separate a remodel from a room that feels genuinely finished.",
+      "Trim, crown, wainscoting, built-ins, and custom millwork: the carpentry details that separate a remodel from a room that feels genuinely finished.",
     overview:
       "Finish carpentry is where craftsmanship shows. Ramos Cabinetry & Construction brings 15+ years of hands-on carpentry to trim, crown molding, wainscoting, shelving, and custom millwork for homeowners across the East Valley who want detail work done right, not rushed.",
     problems: [
@@ -367,7 +367,7 @@ export const services: Service[] = [
       },
       {
         q: "Can you match existing trim profiles in an older home?",
-        a: "In most cases, yes — matching existing profiles is a common part of finish carpentry work in East Valley homes.",
+        a: "In most cases, yes, matching existing profiles is a common part of finish carpentry work in East Valley homes.",
       },
       {
         q: "What areas do you serve?",
@@ -387,7 +387,7 @@ export const services: Service[] = [
     eyebrow: "Residential Remodeling & Construction",
     heroHeadline: "Full-Home Remodeling Rooted in Cabinetry & Carpentry",
     heroSub:
-      "From single-room renovations to whole-home projects, Chris Ramos brings the same craftsman's eye to every part of the job — not just the cabinets.",
+      "From single-room renovations to whole-home projects, Chris Ramos brings the same craftsman's eye to every part of the job, not just the cabinets.",
     overview:
       "Ramos Cabinetry & Construction takes on residential remodeling projects across the East Valley, built on a foundation of custom cabinetry and fine carpentry. Whether it's one room or several, the same family-owned, hands-on standard applies to the whole project.",
     problems: [
@@ -410,7 +410,7 @@ export const services: Service[] = [
       "Layout and design consultation",
       "Direct project oversight by Chris Ramos",
       "Coordination with trade partners as needed",
-      "Licensed, bonded, and insured work — ROC #364821",
+      "Licensed, bonded, and insured work: ROC #364821",
     ],
     faqs: [
       {
@@ -419,7 +419,7 @@ export const services: Service[] = [
       },
       {
         q: "Do you handle projects beyond kitchens and bathrooms?",
-        a: "Yes — home remodeling covers living spaces, home offices, mudrooms, and full-home renovation projects.",
+        a: "Yes, home remodeling covers living spaces, home offices, mudrooms, and full-home renovation projects.",
       },
       {
         q: "Are you licensed, bonded, and insured?",
@@ -427,7 +427,7 @@ export const services: Service[] = [
       },
       {
         q: "Do you offer free estimates?",
-        a: "Yes — call 480-358-8607 or request a free estimate online to get started.",
+        a: "Yes, call 480-358-8607 or request a free estimate online to get started.",
       },
     ],
   },
@@ -505,7 +505,7 @@ export const neighborhoodPages: NeighborhoodContent[] = [
     cityName: "Gilbert",
     angle: "Early-2000s family floor plans",
     intro:
-      "Power Ranch is full of early-2000s family floor plans — practical layouts that, two decades later, are ready for a cabinetry refresh. We regularly help Power Ranch homeowners modernize kitchens that haven't changed since the original build, with updated storage, custom islands, and cabinetry that fits the way families actually use the space today.",
+      "Power Ranch is full of early-2000s family floor plans, practical layouts that, two decades later, are ready for a cabinetry refresh. We regularly help Power Ranch homeowners modernize kitchens that haven't changed since the original build, with updated storage, custom islands, and cabinetry that fits the way families actually use the space today.",
     focusAreas: [
       "Kitchen modernization for original early-2000s layouts",
       "Custom islands with added seating and storage",
@@ -513,7 +513,7 @@ export const neighborhoodPages: NeighborhoodContent[] = [
       "Updated finishes that replace builder-grade oak and laminate",
     ],
     localNote:
-      "Many Power Ranch kitchens share a similar original footprint, which means we've seen the layout before — and know where the easiest, highest-impact upgrades usually are.",
+      "Many Power Ranch kitchens share a similar original footprint, which means we've seen the layout before, and know where the easiest, highest-impact upgrades usually are.",
   },
   {
     slug: "agritopia",
@@ -530,7 +530,7 @@ export const neighborhoodPages: NeighborhoodContent[] = [
       "Design-aware cabinetry that complements, not competes with, the home's style",
     ],
     localNote:
-      "Agritopia homeowners tend to have a clear point of view on style — we design around that, not around a standard catalog.",
+      "Agritopia homeowners tend to have a clear point of view on style. We design around that, not around a standard catalog.",
   },
   {
     slug: "morrison-ranch",
@@ -539,7 +539,7 @@ export const neighborhoodPages: NeighborhoodContent[] = [
     cityName: "Gilbert",
     angle: "Traditional & Mediterranean family homes",
     intro:
-      "Morrison Ranch's traditional and Mediterranean-influenced homes are built for family living, and that's exactly where our cabinetry work focuses — functional layouts, real pantry organization, and built-ins that add storage without disrupting the home's existing character.",
+      "Morrison Ranch's traditional and Mediterranean-influenced homes are built for family living, and that's exactly where our cabinetry work focuses: functional layouts, real pantry organization, and built-ins that add storage without disrupting the home's existing character.",
     focusAreas: [
       "Functional family kitchen layouts",
       "Pantry organization and cabinetry systems",
@@ -547,7 +547,7 @@ export const neighborhoodPages: NeighborhoodContent[] = [
       "Detail work that complements traditional and Mediterranean finishes",
     ],
     localNote:
-      "Morrison Ranch projects often start with a storage problem — not enough pantry, not enough cabinet depth — which is exactly the kind of practical redesign we specialize in.",
+      "Morrison Ranch projects often start with a storage problem: not enough pantry, not enough cabinet depth, which is exactly the kind of practical redesign we specialize in.",
   },
 ];
 
@@ -564,7 +564,7 @@ export const cityPages: CityContent[] = [
     slug: "tempe",
     city: "Tempe",
     intro:
-      "As our home base, Tempe is where Ramos Cabinetry & Construction does some of its most frequent work — from ASU-area bungalows to newer builds near South Tempe. We know the mix of older housing stock and updated developments here, and we build cabinetry and finish carpentry suited to both.",
+      "As our home base, Tempe is where Ramos Cabinetry & Construction does some of its most frequent work, from ASU-area bungalows to newer builds near South Tempe. We know the mix of older housing stock and updated developments here, and we build cabinetry and finish carpentry suited to both.",
     neighborhoods: "Downtown Tempe, South Tempe, Warner Ranch, and the neighborhoods surrounding Kyrene Corridor.",
     localNote: "Being based in Tempe means faster scheduling and in-person walkthroughs for local homeowners.",
   },
@@ -574,7 +574,7 @@ export const cityPages: CityContent[] = [
     intro:
       "Gilbert's mix of established neighborhoods and newer master-planned communities calls for cabinetry that fits a range of home styles. We build custom and semi-custom kitchens, bathrooms, and finish carpentry for homeowners throughout Gilbert.",
     neighborhoods: "Power Ranch, Agritopia, Morrison Ranch, and Downtown Gilbert.",
-    localNote: "Gilbert homeowners often ask about matching cabinetry to existing farmhouse or transitional interiors — a specialty of ours.",
+    localNote: "Gilbert homeowners often ask about matching cabinetry to existing farmhouse or transitional interiors, a specialty of ours.",
   },
   {
     slug: "mesa",
@@ -582,7 +582,7 @@ export const cityPages: CityContent[] = [
     intro:
       "From longtime Mesa neighborhoods to newer East Mesa development, we bring the same hands-on cabinetry and remodeling standard to every project. Kitchen and bathroom cabinetry, built-ins, and finish carpentry are our most requested work in the area.",
     neighborhoods: "Downtown Mesa, East Mesa, Las Sendas, and Red Mountain.",
-    localNote: "Many Mesa projects involve updating older cabinetry in homes built decades ago — a job we take on regularly.",
+    localNote: "Many Mesa projects involve updating older cabinetry in homes built decades ago, a job we take on regularly.",
   },
   {
     slug: "chandler",
@@ -596,9 +596,9 @@ export const cityPages: CityContent[] = [
     slug: "scottsdale",
     city: "Scottsdale",
     intro:
-      "Scottsdale homeowners expect a premium finish, and that's exactly the standard we build to — custom cabinetry, detailed millwork, and remodeling work suited to the area's higher-end residential character.",
+      "Scottsdale homeowners expect a premium finish, and that's exactly the standard we build to: custom cabinetry, detailed millwork, and remodeling work suited to the area's higher-end residential character.",
     neighborhoods: "South Scottsdale, Old Town, McCormick Ranch, and Gainey Ranch.",
-    localNote: "Scottsdale projects often lean into custom finish selections and detailed millwork — areas where our carpentry background matters most.",
+    localNote: "Scottsdale projects often lean into custom finish selections and detailed millwork, areas where our carpentry background matters most.",
   },
   {
     slug: "phoenix",

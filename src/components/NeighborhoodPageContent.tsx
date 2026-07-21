@@ -19,9 +19,9 @@ export default function NeighborhoodPageContent({ slug }: { slug: string }) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHero
-        eyebrow={`${n.cityName}, AZ — ${n.angle}`}
+        eyebrow={`${n.cityName}, AZ · ${n.angle}`}
         title={`Custom Cabinets & Remodeling in ${n.name}`}
-        sub={`Cabinetry and finish carpentry built for ${n.name}'s ${n.angle.toLowerCase()} — not generic builder-grade replacements.`}
+        sub={`Cabinetry and finish carpentry built for ${n.name}'s ${n.angle.toLowerCase()}, not generic builder-grade replacements.`}
       />
       <TrustBar />
 
@@ -97,12 +97,12 @@ export default function NeighborhoodPageContent({ slug }: { slug: string }) {
 
       <section className="mx-auto max-w-4xl px-5 md:px-8 py-24">
         <Eyebrow>Common Questions</Eyebrow>
-        <h2 className="font-display text-3xl mt-4 mb-12">FAQ — {n.name}</h2>
+        <h2 className="font-display text-3xl mt-4 mb-12">FAQ: {n.name}</h2>
         <FAQAccordion
           faqs={[
             {
               q: `Do you work in ${n.name} specifically?`,
-              a: `Yes — ${n.name} is one of our regular service areas within ${n.cityName}, and we're familiar with the neighborhood's ${n.angle.toLowerCase()}.`,
+              a: `Yes, ${n.name} is one of our regular service areas within ${n.cityName}, and we're familiar with the neighborhood's ${n.angle.toLowerCase()}.`,
             },
             {
               q: "Do you offer free estimates?",
@@ -110,7 +110,7 @@ export default function NeighborhoodPageContent({ slug }: { slug: string }) {
             },
             {
               q: "Are you licensed, bonded, and insured?",
-              a: `Yes — ${business.license}, fully licensed, bonded, and insured.`,
+              a: `Yes, ${business.license}, fully licensed, bonded, and insured.`,
             },
           ]}
         />

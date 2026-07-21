@@ -6,7 +6,7 @@ import { PageHero, CTABand, Eyebrow, TrustBar } from "@/components/Sections";
 export const metadata: Metadata = {
   title: "About Chris Ramos | Family-Owned Cabinetry & Construction",
   description:
-    "Meet Chris Ramos — 15+ years of hands-on carpentry experience, building custom cabinetry and remodeling projects across Tempe and the East Valley.",
+    "Meet Chris Ramos, with 15+ years of hands-on carpentry experience building custom cabinetry and remodeling projects across Tempe and the East Valley.",
 };
 
 export default function AboutPage() {
@@ -44,7 +44,7 @@ export default function AboutPage() {
           <div className="mt-8 space-y-5 text-charcoal/70 leading-relaxed text-lg">
             <p>
               Chris Ramos founded C Ramos Cabinetry &amp; Construction on a straightforward
-              belief: cabinetry should be built for the exact room it lives in — measured,
+              belief: cabinetry should be built for the exact room it lives in, measured,
               designed, and finished by hand, not pulled from a warehouse catalog.
             </p>
             <p>
@@ -55,7 +55,7 @@ export default function AboutPage() {
             </p>
             <p>
               Ramos Cabinetry &amp; Construction is family-owned and stays intentionally
-              hands-on. Chris is directly involved in design and build on every job — not
+              hands-on. Chris is directly involved in design and build on every job, not
               managing from a distance, and not handing your project off to a rotating crew.
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
             {[
               {
                 title: "Measure Twice",
-                body: "Every project starts with an in-home consultation and careful measurement — no guesswork, no generic sizing.",
+                body: "Every project starts with an in-home consultation and careful measurement. No guesswork, no generic sizing.",
               },
               {
                 title: "Build to Last",
@@ -91,7 +91,7 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-4xl px-5 md:px-8 py-24 text-center">
         <h2 className="font-display text-3xl md:text-4xl">
-          Licensed, Bonded &amp; Insured — {business.license}
+          Licensed, Bonded &amp; Insured: {business.license}
         </h2>
         <p className="mt-4 text-charcoal/60 max-w-xl mx-auto">
           Ramos Cabinetry &amp; Construction is fully licensed, bonded, and insured, giving

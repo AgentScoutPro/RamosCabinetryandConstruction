@@ -15,7 +15,7 @@ export default function GalleryPage() {
       <PageHero
         eyebrow="Recent Work"
         title="Project Gallery"
-        sub="Real cabinetry, remodeling, and finish carpentry projects — built and photographed on the job across the East Valley."
+        sub="Real cabinetry, remodeling, and finish carpentry projects, built and photographed on the job across the East Valley."
       />
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24">

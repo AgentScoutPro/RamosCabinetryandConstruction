@@ -32,7 +32,7 @@ export default function ReviewsPage() {
       <PageHero
         eyebrow="What Homeowners Say"
         title={`${business.reviewRating} Stars · ${business.reviewCount} Reviews`}
-        sub="Honest work, direct communication, and cabinetry built to last — in the words of East Valley homeowners."
+        sub="Honest work, direct communication, and cabinetry built to last, in the words of East Valley homeowners."
       />
 
       <section className="mx-auto max-w-6xl px-5 md:px-8 py-24">

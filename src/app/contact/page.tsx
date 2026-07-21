@@ -50,7 +50,7 @@ export default function ContactPage() {
           </div>
 
           <div className="mt-10 aspect-[16/10] border border-line bg-paper-dim flex items-center justify-center text-charcoal/40 text-sm">
-            Google Map Embed — Tempe, AZ Service Area
+            Google Map Embed of the Tempe, AZ Service Area
           </div>
         </div>
 

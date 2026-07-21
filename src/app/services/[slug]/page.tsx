@@ -97,7 +97,7 @@ export default async function ServiceDetailPage({
       <section className="bg-paper-dim reveal-divider">
         <div className="mx-auto max-w-4xl px-5 md:px-8 py-24">
           <Eyebrow>Common Questions</Eyebrow>
-          <h2 className="font-display text-3xl mt-4 mb-12">FAQ — {service.name}</h2>
+          <h2 className="font-display text-3xl mt-4 mb-12">FAQ: {service.name}</h2>
           <FAQAccordion faqs={service.faqs} />
         </div>
       </section>
