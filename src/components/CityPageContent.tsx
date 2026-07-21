@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { services, business, cityPages } from "@/lib/site-data";
+import { services, business, cityPages, neighborhoodPages } from "@/lib/site-data";
 import { PageHero, CTABand, Eyebrow, TrustBar } from "@/components/Sections";
 
 export default function CityPageContent({ citySlug }: { citySlug: string }) {
   const city = cityPages.find((c) => c.slug === citySlug)!;
   const otherCities = cityPages.filter((c) => c.slug !== citySlug);
+  const neighborhoods = neighborhoodPages.filter((n) => n.citySlug === citySlug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -81,6 +82,28 @@ export default function CityPageContent({ citySlug }: { citySlug: string }) {
           </div>
         </div>
       </section>
+
+      {neighborhoods.length > 0 && (
+        <section className="mx-auto max-w-7xl px-5 md:px-8 py-24">
+          <Eyebrow>Neighborhoods We Serve in {city.city}</Eyebrow>
+          <h2 className="font-display text-3xl mt-4 mb-10">Local Neighborhood Focus</h2>
+          <div className="grid md:grid-cols-3 gap-px bg-line">
+            {neighborhoods.map((n) => (
+              <Link
+                key={n.slug}
+                href={`/${city.slug}-custom-cabinets/${n.slug}`}
+                className="group bg-paper hover:bg-paper-dim transition-colors p-8"
+              >
+                <span className="text-xs text-brass tracking-[0.14em] uppercase">{n.angle}</span>
+                <h3 className="font-display text-2xl mt-3 group-hover:text-brass transition-colors">{n.name}</h3>
+                <span className="inline-block mt-6 text-sm text-brass underline underline-offset-4">
+                  View {n.name} →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24">
         <Eyebrow>Nearby Service Areas</Eyebrow>

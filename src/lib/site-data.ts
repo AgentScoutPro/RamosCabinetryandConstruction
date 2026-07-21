@@ -410,6 +410,71 @@ export const reviews = [
   },
 ];
 
+export type NeighborhoodContent = {
+  slug: string;
+  name: string;
+  citySlug: string;
+  cityName: string;
+  angle: string;
+  intro: string;
+  focusAreas: string[];
+  localNote: string;
+};
+
+export const neighborhoodPages: NeighborhoodContent[] = [
+  {
+    slug: "power-ranch",
+    name: "Power Ranch",
+    citySlug: "gilbert",
+    cityName: "Gilbert",
+    angle: "Early-2000s family floor plans",
+    intro:
+      "Power Ranch is full of early-2000s family floor plans — practical layouts that, two decades later, are ready for a cabinetry refresh. We regularly help Power Ranch homeowners modernize kitchens that haven't changed since the original build, with updated storage, custom islands, and cabinetry that fits the way families actually use the space today.",
+    focusAreas: [
+      "Kitchen modernization for original early-2000s layouts",
+      "Custom islands with added seating and storage",
+      "Pantry and cabinet storage upgrades",
+      "Updated finishes that replace builder-grade oak and laminate",
+    ],
+    localNote:
+      "Many Power Ranch kitchens share a similar original footprint, which means we've seen the layout before — and know where the easiest, highest-impact upgrades usually are.",
+  },
+  {
+    slug: "agritopia",
+    name: "Agritopia",
+    citySlug: "gilbert",
+    cityName: "Gilbert",
+    angle: "Craftsman & character homes",
+    intro:
+      "Agritopia's Craftsman-style character homes call for cabinetry and millwork that respects the architecture, not generic builder cabinetry dropped into a farmhouse-style home. We build custom millwork, built-ins, and warm, considered finishes that fit the neighborhood's design-conscious identity.",
+    focusAreas: [
+      "Custom millwork suited to Craftsman architectural detail",
+      "Built-ins that match existing trim and character",
+      "Warm wood finishes over generic painted stock cabinetry",
+      "Design-aware cabinetry that complements, not competes with, the home's style",
+    ],
+    localNote:
+      "Agritopia homeowners tend to have a clear point of view on style — we design around that, not around a standard catalog.",
+  },
+  {
+    slug: "morrison-ranch",
+    name: "Morrison Ranch",
+    citySlug: "gilbert",
+    cityName: "Gilbert",
+    angle: "Traditional & Mediterranean family homes",
+    intro:
+      "Morrison Ranch's traditional and Mediterranean-influenced homes are built for family living, and that's exactly where our cabinetry work focuses — functional layouts, real pantry organization, and built-ins that add storage without disrupting the home's existing character.",
+    focusAreas: [
+      "Functional family kitchen layouts",
+      "Pantry organization and cabinetry systems",
+      "Built-ins for living and dining spaces",
+      "Detail work that complements traditional and Mediterranean finishes",
+    ],
+    localNote:
+      "Morrison Ranch projects often start with a storage problem — not enough pantry, not enough cabinet depth — which is exactly the kind of practical redesign we specialize in.",
+  },
+];
+
 export type CityContent = {
   slug: string;
   city: string;
