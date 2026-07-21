@@ -59,23 +59,29 @@ export default function Home() {
       <VideoScrubScene
         id="hero"
         videoSrc="/videos/hero-ramos.mp4"
-        posterSrc="/videos/hero-ramos-poster.jpg"
-        posterAlt="Custom cabinet components including walnut doors, drawer boxes, and hardware, built by Ramos Cabinetry & Construction"
+        posterStart="/videos/hero-ramos-poster-start.jpg"
+        posterFinal="/videos/hero-ramos-poster-final.jpg"
+        posterAlt="Custom walnut river-table kitchen island with a blue epoxy inlay, built by Ramos Cabinetry & Construction"
         eyebrow="Family-Owned · Tempe, AZ · Est. Craftsmanship 15+ Years"
         heading="Cabinetry Built to Fit Your Home, Not the Other Way Around"
         sub="Custom cabinets, kitchen and bathroom remodeling, and fine finish carpentry, designed, built, and installed by Chris Ramos for homeowners across Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix."
         showCta
         priority
+        runwayDesktopVh={280}
+        runwayMobileVh={180}
       />
 
       <VideoScrubScene
         id="process"
         videoSrc="/videos/ramos-build-wall.mp4"
-        posterSrc="/videos/ramos-build-wall-poster.jpg"
-        posterAlt="Custom wood wall feature and built-in shelving under construction in an East Valley home"
+        posterStart="/videos/ramos-build-wall-poster-start.jpg"
+        posterFinal="/videos/ramos-build-wall-poster-final.jpg"
+        posterAlt="Custom built-in wood shelving wall with potted greenery in an East Valley home"
         eyebrow="How It Gets Built"
         heading="From Framing to Finish, Every Detail Is Built by Hand"
         sub="No sales team, no subcontracted guesswork. The person measuring your space is the same person cutting, joining, and installing every piece."
+        runwayDesktopVh={220}
+        runwayMobileVh={160}
       />
 
       <TrustBar />
