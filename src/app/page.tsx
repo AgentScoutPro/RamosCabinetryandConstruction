@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
-import { business, services, cityPages, reviews } from "@/lib/site-data";
+import { business, services, cityPages, reviews, projects } from "@/lib/site-data";
 import { TrustBar, CTABand, Eyebrow, FAQAccordion } from "@/components/Sections";
+import CraftReveal from "@/components/CraftReveal";
 
 export default function Home() {
   return (
@@ -36,10 +38,19 @@ export default function Home() {
             </div>
           </div>
           <div className="md:col-span-4 hidden md:block">
-            <div className="aspect-[3/4] bg-gradient-to-b from-[#4a3624] to-[#241a13] border border-line-dark flex items-end p-6">
-              <div>
+            <div className="relative aspect-[3/4] border border-line-dark overflow-hidden">
+              <Image
+                src={projects[0].image}
+                alt={projects[0].alt}
+                fill
+                priority
+                sizes="(min-width: 768px) 33vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-walnut/90 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="text-brass-light text-xs tracking-[0.2em] uppercase">Featured Build</div>
-                <div className="font-display text-cream text-xl mt-2">Custom Walnut Kitchen — Gilbert, AZ</div>
+                <div className="font-display text-cream text-xl mt-2">{projects[0].title}</div>
               </div>
             </div>
           </div>
@@ -69,6 +80,16 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* Craft reveal — scroll-driven before/after, real project photos */}
+      <CraftReveal
+        beforeSrc={projects.find((p) => p.slug === "vanity-boxes-install")!.image}
+        beforeAlt={projects.find((p) => p.slug === "vanity-boxes-install")!.alt}
+        beforeLabel="Cabinet Boxes, Mid-Install"
+        afterSrc={projects.find((p) => p.slug === "wet-bar-built-in")!.image}
+        afterAlt={projects.find((p) => p.slug === "wet-bar-built-in")!.alt}
+        afterLabel="Finished Built-In"
+      />
 
       {/* Services — asymmetric, not a generic 3-col grid */}
       <section className="bg-paper-dim reveal-divider">
@@ -117,16 +138,20 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { title: "Custom Walnut Kitchen", city: "Gilbert, AZ" },
-            { title: "Primary Bath Vanity Rebuild", city: "Tempe, AZ" },
-            { title: "Living Room Built-Ins", city: "Chandler, AZ" },
-          ].map((p, i) => (
-            <div key={p.title} className={i === 0 ? "md:col-span-2 aspect-[16/10]" : "aspect-[4/5]"}>
-              <div className="w-full h-full bg-gradient-to-br from-[#5a4530] via-[#3a2c1f] to-[#241a13] flex items-end p-6 border border-line">
-                <div>
+          {projects.slice(0, 3).map((p, i) => (
+            <div key={p.slug} className={i === 0 ? "md:col-span-2 aspect-[16/10] relative" : "aspect-[4/5] relative"}>
+              <div className="relative w-full h-full border border-line overflow-hidden">
+                <Image
+                  src={p.image}
+                  alt={p.alt}
+                  fill
+                  sizes={i === 0 ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div className="font-display text-cream text-lg">{p.title}</div>
-                  <div className="text-cream/50 text-sm mt-1">{p.city}</div>
+                  <div className="text-cream/60 text-sm mt-1">{p.tag}</div>
                 </div>
               </div>
             </div>
