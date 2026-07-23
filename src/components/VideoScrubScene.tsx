@@ -23,6 +23,8 @@ type VideoScrubSceneProps = {
   copyRevealStart?: number;
   copyRevealEnd?: number;
   playback?: "ambient" | "scrub";
+  layeredHero?: boolean;
+  scrubEndProgress?: number;
 };
 
 function SceneCopy({
@@ -115,13 +117,15 @@ function ScrubbedScene({
   copyRevealStart = 0.55,
   copyRevealEnd = 0.85,
   playback = "ambient",
+  layeredHero = false,
+  scrubEndProgress = 1,
 }: VideoScrubSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const runwayVh = useResponsiveRunway(runwayDesktopVh, runwayMobileVh);
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const isScrubbed = playback === "scrub";
-  const videoRef = useScrollScrubbedVideo(scrollYProgress, isScrubbed);
+  const videoRef = useScrollScrubbedVideo(scrollYProgress, isScrubbed, scrubEndProgress);
 
   // Third keyframe pins the value through progress 1: framer-motion routes
   // 2-point scroll-linked opacity/transform through a native WAAPI
@@ -140,6 +144,16 @@ function ScrubbedScene({
   );
   const videoScale = useTransform(scrollYProgress, [0, 1], [1.04, 1]);
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "-2%"]);
+  const headlineOpacity = useTransform(scrollYProgress, [0.08, 0.24, 1], [0, 1, 1]);
+  const headlineY = useTransform(scrollYProgress, [0.08, 0.24, 1], [24, 0, 0]);
+  const subOpacity = useTransform(scrollYProgress, [0.2, 0.36, 1], [0, 1, 1]);
+  const subY = useTransform(scrollYProgress, [0.2, 0.36, 1], [20, 0, 0]);
+  const primaryCtaOpacity = useTransform(scrollYProgress, [0.34, 0.48, 1], [0, 1, 1]);
+  const primaryCtaY = useTransform(scrollYProgress, [0.34, 0.48, 1], [18, 0, 0]);
+  const secondaryCtaOpacity = useTransform(scrollYProgress, [0.42, 0.56, 1], [0, 1, 1]);
+  const secondaryCtaY = useTransform(scrollYProgress, [0.42, 0.56, 1], [18, 0, 0]);
+  const trustOpacity = useTransform(scrollYProgress, [0.6, 0.76, 1], [0, 1, 1]);
+  const trustY = useTransform(scrollYProgress, [0.6, 0.76, 1], [16, 0, 0]);
 
   return (
     <div ref={containerRef} style={{ position: "relative", height: `${runwayVh}vh` }}>
@@ -151,26 +165,74 @@ function ScrubbedScene({
           poster={posterStart}
           muted
           playsInline
-          preload={isScrubbed ? "metadata" : "auto"}
+          preload="auto"
           autoPlay={!isScrubbed}
           loop={!isScrubbed}
           controls={false}
           style={isScrubbed ? undefined : { scale: videoScale, y: videoY }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
-        <motion.div
-          className="relative z-10 px-5 sm:px-7 md:px-12 pb-20 sm:pb-24 md:pb-24"
-          style={{ opacity: copyOpacity, y: copyY }}
-        >
-          <SceneCopy
-            eyebrow={eyebrow}
-            heading={heading}
-            headingId={`${id}-title`}
-            sub={sub}
-            showCta={showCta}
-            priority={priority}
-          />
-        </motion.div>
+        {layeredHero ? (
+          <div className="relative z-10 px-5 sm:px-7 md:px-12 pb-16 sm:pb-20 md:pb-20 will-change-transform">
+            <div className="text-xs md:text-sm tracking-[0.2em] uppercase text-brass-light opacity-70">{eyebrow}</div>
+            <motion.h1
+              id={`${id}-title`}
+              className="font-display text-[2.45rem] sm:text-5xl md:text-7xl text-cream mt-4 max-w-4xl leading-[1.01]"
+              style={{ opacity: headlineOpacity, y: headlineY, transform: "translate3d(0,0,0)" }}
+            >
+              {heading}
+            </motion.h1>
+            <motion.p
+              className="mt-5 text-cream/74 text-[1rem] sm:text-lg max-w-2xl leading-relaxed"
+              style={{ opacity: subOpacity, y: subY, transform: "translate3d(0,0,0)" }}
+            >
+              {sub}
+            </motion.p>
+            {showCta && (
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <motion.div style={{ opacity: primaryCtaOpacity, y: primaryCtaY, transform: "translate3d(0,0,0)" }}>
+                  <Link
+                    href="/contact"
+                    className="block px-7 sm:px-8 py-3.5 bg-brass text-walnut text-sm tracking-wide text-center hover:bg-brass-light transition-colors"
+                  >
+                    Request a Private Project Walkthrough
+                  </Link>
+                </motion.div>
+                <motion.div style={{ opacity: secondaryCtaOpacity, y: secondaryCtaY, transform: "translate3d(0,0,0)" }}>
+                  <a
+                    href={business.phoneHref}
+                    className="block px-7 sm:px-8 py-3.5 border border-cream/30 text-cream text-sm tracking-wide text-center hover:border-brass hover:text-brass-light transition-colors"
+                  >
+                    Call {business.phone}
+                  </a>
+                </motion.div>
+              </div>
+            )}
+            <motion.div
+              className="mt-8 grid grid-cols-2 sm:flex gap-3 sm:gap-4 text-[0.68rem] sm:text-xs uppercase tracking-[0.16em] text-cream/62"
+              style={{ opacity: trustOpacity, y: trustY, transform: "translate3d(0,0,0)" }}
+            >
+              <span>Custom Cabinets</span>
+              <span>Finish Carpentry</span>
+              <span>Remodel Craft</span>
+              <span>East Valley</span>
+            </motion.div>
+          </div>
+        ) : (
+          <motion.div
+            className="relative z-10 px-5 sm:px-7 md:px-12 pb-20 sm:pb-24 md:pb-24"
+            style={{ opacity: copyOpacity, y: copyY }}
+          >
+            <SceneCopy
+              eyebrow={eyebrow}
+              heading={heading}
+              headingId={`${id}-title`}
+              sub={sub}
+              showCta={showCta}
+              priority={priority}
+            />
+          </motion.div>
+        )}
       </div>
     </div>
   );

@@ -109,20 +109,22 @@ export default function Home() {
 
       <VideoScrubScene
         id="hero"
-        videoSrc="/videos/ramos-hero-002.mp4"
-        posterStart="/videos/ramos-hero-002-poster-start.jpg"
-        posterFinal="/videos/ramos-hero-002-poster-final.jpg"
-        posterAlt="Blueprint-to-finished custom kitchen transformation showing Ramos cabinetry craftsmanship"
+        videoSrc="/videos/hero-ramos-v-4-2.mp4"
+        posterStart="/videos/hero-ramos-v-4-2-poster-start.jpg"
+        posterFinal="/videos/hero-ramos-v-4-2-poster-final.jpg"
+        posterAlt="Partially assembled custom Ramos cabinetry becoming a luxury kitchen"
         eyebrow="Custom Cabinetry · Finish Carpentry · East Valley"
-        heading="From Blueprint to Built Beautifully"
-        sub="Ramos Cabinetry & Construction turns the first plan into custom cabinets, remodels, built-ins, and finish carpentry shaped around the way your home should live."
+        heading="The First Frame of a Room Built With Intention"
+        sub="Before the service list, before the estimate, before the final reveal, there is craft: material, proportion, patience, and the quiet confidence of a room becoming what it was meant to be."
         showCta
         priority
-        runwayDesktopVh={280}
-        runwayMobileVh={180}
+        runwayDesktopVh={240}
+        runwayMobileVh={220}
         playback="scrub"
         copyRevealStart={0}
         copyRevealEnd={0.28}
+        layeredHero
+        scrubEndProgress={0.78}
       />
 
       <TrustBar />
