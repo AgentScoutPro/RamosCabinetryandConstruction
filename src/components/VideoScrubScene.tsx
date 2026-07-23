@@ -20,6 +20,8 @@ type VideoScrubSceneProps = {
   priority?: boolean;
   runwayDesktopVh?: number;
   runwayMobileVh?: number;
+  copyRevealStart?: number;
+  copyRevealEnd?: number;
 };
 
 function SceneCopy({
@@ -28,22 +30,26 @@ function SceneCopy({
   headingId,
   sub,
   showCta,
+  priority,
 }: {
   eyebrow: string;
   heading: string;
   headingId: string;
   sub: string;
   showCta?: boolean;
+  priority?: boolean;
 }) {
+  const HeadingTag = priority ? "h1" : "h2";
+
   return (
     <>
       <div className="text-xs md:text-sm tracking-[0.2em] uppercase text-brass-light">{eyebrow}</div>
-      <h2
+      <HeadingTag
         id={headingId}
         className="font-display text-3xl sm:text-4xl md:text-6xl text-cream mt-4 max-w-3xl leading-[1.05]"
       >
         {heading}
-      </h2>
+      </HeadingTag>
       <p className="mt-5 text-cream/70 text-lg max-w-xl leading-relaxed">{sub}</p>
       {showCta && (
         <div className="mt-9 flex flex-col sm:flex-row gap-4">
@@ -80,8 +86,15 @@ function ReducedMotionScene({
     <section className="relative min-h-screen flex flex-col justify-end overflow-hidden isolate" aria-labelledby={`${id}-title`}>
       <Image src={posterFinal} alt={posterAlt} fill priority={priority} sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
-      <div className="relative z-10 px-5 md:px-12 pb-16 md:pb-24">
-        <SceneCopy eyebrow={eyebrow} heading={heading} headingId={`${id}-title`} sub={sub} showCta={showCta} />
+      <div className="relative z-10 px-5 md:px-12 pb-28 md:pb-24">
+        <SceneCopy
+          eyebrow={eyebrow}
+          heading={heading}
+          headingId={`${id}-title`}
+          sub={sub}
+          showCta={showCta}
+          priority={priority}
+        />
       </div>
     </section>
   );
@@ -95,8 +108,11 @@ function ScrubbedScene({
   heading,
   sub,
   showCta,
+  priority,
   runwayDesktopVh = 240,
   runwayMobileVh = 180,
+  copyRevealStart = 0.55,
+  copyRevealEnd = 0.85,
 }: VideoScrubSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const runwayVh = useResponsiveRunway(runwayDesktopVh, runwayMobileVh);
@@ -109,8 +125,16 @@ function ScrubbedScene({
   // "accelerated" animation path that doesn't hold the last keyframe once
   // scroll moves past it, decaying back toward the first value instead of
   // staying clamped, which would fade the copy back out while still pinned.
-  const copyOpacity = useTransform(scrollYProgress, [0.55, 0.85, 1], [0, 1, 1]);
-  const copyY = useTransform(scrollYProgress, [0.55, 0.85, 1], [24, 0, 0]);
+  const copyOpacity = useTransform(
+    scrollYProgress,
+    copyRevealStart <= 0 ? [0, 1] : [copyRevealStart, copyRevealEnd, 1],
+    copyRevealStart <= 0 ? [1, 1] : [0, 1, 1],
+  );
+  const copyY = useTransform(
+    scrollYProgress,
+    copyRevealStart <= 0 ? [0, 1] : [copyRevealStart, copyRevealEnd, 1],
+    copyRevealStart <= 0 ? [0, 0] : [24, 0, 0],
+  );
 
   return (
     <div ref={containerRef} style={{ position: "relative", height: `${runwayVh}vh` }}>
@@ -126,10 +150,17 @@ function ScrubbedScene({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
         <motion.div
-          className="relative z-10 px-5 md:px-12 pb-16 md:pb-24"
+          className="relative z-10 px-5 md:px-12 pb-28 md:pb-24"
           style={{ opacity: copyOpacity, y: copyY }}
         >
-          <SceneCopy eyebrow={eyebrow} heading={heading} headingId={`${id}-title`} sub={sub} showCta={showCta} />
+          <SceneCopy
+            eyebrow={eyebrow}
+            heading={heading}
+            headingId={`${id}-title`}
+            sub={sub}
+            showCta={showCta}
+            priority={priority}
+          />
         </motion.div>
       </div>
     </div>
