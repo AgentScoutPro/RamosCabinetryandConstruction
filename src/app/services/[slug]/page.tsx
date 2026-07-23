@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, business, cityPages } from "@/lib/site-data";
 import { getGalleryForService } from "@/lib/project-gallery";
+import { serviceImages } from "@/lib/service-images";
 import { PageHero, CTABand, Eyebrow, FAQAccordion, TrustBar } from "@/components/Sections";
 
 export function generateStaticParams() {
@@ -35,6 +36,7 @@ export default async function ServiceDetailPage({
 
   const otherServices = services.filter((s) => s.slug !== service.slug).slice(0, 3);
   const serviceGallery = getGalleryForService(service.slug, 6);
+  const heroImage = serviceImages[service.slug];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -48,7 +50,13 @@ export default async function ServiceDetailPage({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PageHero eyebrow={service.eyebrow} title={service.heroHeadline} sub={service.heroSub} />
+      <PageHero
+        eyebrow={service.eyebrow}
+        title={service.heroHeadline}
+        sub={service.heroSub}
+        image={heroImage?.image}
+        imageAlt={heroImage?.alt}
+      />
       <TrustBar />
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24 grid md:grid-cols-12 gap-12">

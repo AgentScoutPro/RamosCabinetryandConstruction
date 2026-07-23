@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { business, trustMarkers } from "@/lib/site-data";
 
 export function TrustBar() {
@@ -79,14 +80,31 @@ export function PageHero({
   eyebrow,
   title,
   sub,
+  image,
+  imageAlt,
 }: {
   eyebrow: string;
   title: string;
   sub: string;
+  image?: string;
+  imageAlt?: string;
 }) {
   return (
-    <section className="bg-walnut">
-      <div className="mx-auto max-w-5xl px-5 md:px-8 pt-24 pb-20 text-center">
+    <section className="relative overflow-hidden bg-walnut">
+      {image && (
+        <>
+          <Image
+            src={image}
+            alt={imageAlt ?? ""}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-42"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-walnut via-walnut/72 to-walnut/58" />
+        </>
+      )}
+      <div className="relative mx-auto max-w-5xl px-5 md:px-8 pt-24 pb-20 text-center">
         <Eyebrow>
           <span className="text-brass-light">{eyebrow}</span>
         </Eyebrow>

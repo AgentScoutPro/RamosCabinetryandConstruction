@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import type { ProjectGalleryImage } from "@/lib/project-gallery";
 import { business, cityPages, services } from "@/lib/site-data";
 import { projectGallery } from "@/lib/project-gallery";
+import { serviceImages } from "@/lib/service-images";
 import { CTABand, Eyebrow, FAQAccordion } from "@/components/Sections";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import VideoScrubScene from "@/components/VideoScrubScene";
@@ -100,15 +100,6 @@ const serviceDescriptions: Record<string, string> = {
   "cabinet-installation": "Precision installation, hardware, and repair for new or existing cabinetry.",
   "finish-carpentry": "Trim, built ins, mantels, shiplap, wainscoting, and detail carpentry.",
   "home-remodeling": "Broader residential remodeling and construction projects.",
-};
-
-const serviceImages: Record<string, ProjectGalleryImage> = {
-  "custom-cabinets": galleryImage("ramos-custom-cabinets-gilbert-east-valley-az-008"),
-  "kitchen-remodeling": galleryImage("ramos-kitchen-remodeling-tempe-east-valley-az-031"),
-  "bathroom-remodeling": galleryImage("ramos-bathroom-remodeling-gilbert-east-valley-az-098"),
-  "cabinet-installation": galleryImage("ramos-cabinet-installation-scottsdale-east-valley-az-071"),
-  "finish-carpentry": galleryImage("ramos-finish-carpentry-mesa-east-valley-az-003"),
-  "home-remodeling": galleryImage("ramos-home-remodeling-chandler-east-valley-az-064"),
 };
 
 const whyChoose = [
@@ -228,12 +219,17 @@ export default function Home() {
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className={
-                  index === 0
-                    ? "group bg-walnut-2 hover:bg-[#3f2e20] transition-colors sm:col-span-2 lg:col-span-2 grid md:grid-cols-[1fr_0.9fr] min-h-80 overflow-hidden"
-                    : "group bg-walnut-2 hover:bg-[#3f2e20] transition-colors min-h-80 flex flex-col overflow-hidden"
-                }
+                className="group flex min-h-[430px] flex-col overflow-hidden bg-walnut-2 transition-colors hover:bg-[#3f2e20]"
               >
+                <div className="relative aspect-[4/3] min-h-52 shrink-0">
+                  <Image
+                    src={serviceImages[s.slug]?.image ?? projectGallery[0].image}
+                    alt={serviceImages[s.slug]?.alt ?? `${s.name} by C Ramos Cabinetry and Construction`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover opacity-82 transition duration-700 group-hover:scale-[1.04]"
+                  />
+                </div>
                 <div className="p-7 md:p-8 flex flex-col">
                   <span className="text-brass-light text-xs tracking-[0.18em] uppercase">
                     {String(index + 1).padStart(2, "0")}
@@ -247,15 +243,6 @@ export default function Home() {
                   <span className="mt-auto pt-8 text-sm text-brass-light underline underline-offset-4">
                     Learn More →
                   </span>
-                </div>
-                <div className="relative aspect-[4/3] md:aspect-auto min-h-52">
-                  <Image
-                    src={serviceImages[s.slug]?.image ?? projectGallery[0].image}
-                    alt={serviceImages[s.slug]?.alt ?? `${s.name} by C Ramos Cabinetry and Construction`}
-                    fill
-                    sizes={index === 0 ? "(max-width: 1024px) 100vw, 45vw" : "(max-width: 1024px) 100vw, 30vw"}
-                    className="object-cover opacity-82 group-hover:scale-[1.04] transition duration-700"
-                  />
                 </div>
               </Link>
             ))}
