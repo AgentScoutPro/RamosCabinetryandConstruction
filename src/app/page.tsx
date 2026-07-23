@@ -2,76 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { business, cityPages, projects, reviews, services } from "@/lib/site-data";
 import { CTABand, Eyebrow, TrustBar } from "@/components/Sections";
-import CraftReveal from "@/components/CraftReveal";
 import VideoScrubScene from "@/components/VideoScrubScene";
-
-const storyBeats = [
-  {
-    label: "Measure",
-    title: "The room tells us what the cabinets need to become.",
-    body: "Chris starts in the home, measuring walls, appliances, corners, storage habits, and the places stock cabinets usually waste space.",
-    image: "/images/gallery/raw-lumber-material.jpg",
-    alt: "Raw hardwood lumber staged before custom cabinetry fabrication",
-  },
-  {
-    label: "Build",
-    title: "Material turns into proportion, joinery, and finish.",
-    body: "Cabinet boxes, panels, shelves, vanities, and built-ins are built around the exact room, not ordered as a generic set.",
-    image: "/images/gallery/vanity-boxes-install.jpg",
-    alt: "Charcoal vanity cabinet boxes mid-install",
-  },
-  {
-    label: "Fit",
-    title: "Installation is where the work either disappears or shows.",
-    body: "Level lines, scribed edges, door gaps, trim returns, and final hardware decide whether a project feels built-in or simply placed there.",
-    image: "/images/gallery/laundry-built-ins.jpg",
-    alt: "Custom laundry room cabinetry with quartz counter and farmhouse sink",
-  },
-  {
-    label: "Live",
-    title: "The finished room should feel like it was always meant to be there.",
-    body: "The payoff is storage that works, surfaces that belong, and finish carpentry that makes the whole home feel more resolved.",
-    image: "/images/gallery/river-table-island-kitchen.jpg",
-    alt: "Custom walnut river-table kitchen island with blue epoxy inlay",
-  },
-];
-
-const proofPoints = [
-  { value: business.yearsExperience, label: "years hands-on carpentry" },
-  { value: business.reviewRating, label: "star local reputation" },
-  { value: business.reviewCount, label: "homeowner reviews" },
-  { value: business.license, label: "licensed, bonded, insured" },
-];
-
-const challenges = [
-  {
-    problem: "A kitchen that fights the way you cook",
-    solution:
-      "Layouts are reworked around prep zones, appliance clearances, storage habits, and the things you reach for every day.",
-  },
-  {
-    problem: "Storage that looks fine until you live with it",
-    solution:
-      "Drawer depth, pantry width, shelf spacing, and built-in details are sized for the way the room is actually used.",
-  },
-  {
-    problem: "Cabinets that look added-on",
-    solution:
-      "Door style, profile, stain, trim, and reveal lines are chosen to belong with the rest of the home.",
-  },
-  {
-    problem: "Too many people between you and the work",
-    solution:
-      "Chris stays directly involved from measure to install, so answers come from the person responsible for the final fit.",
-  },
-];
-
-const serviceStory = [
-  "Custom cabinet builds",
-  "Kitchen and bathroom remodels",
-  "Built-ins, vanities, laundry rooms",
-  "Finish carpentry and installation",
-];
 
 const featuredGallery = [
   projects[0],
@@ -81,6 +12,55 @@ const featuredGallery = [
   projects[4],
   projects[6],
 ];
+
+
+function CinematicImageChapter({
+  chapter,
+  eyebrow,
+  heading,
+  body,
+  image,
+  alt,
+  align = "left",
+  objectPosition = "center",
+}: {
+  chapter: string;
+  eyebrow: string;
+  heading: string;
+  body: string;
+  image: string;
+  alt: string;
+  align?: "left" | "right";
+  objectPosition?: string;
+}) {
+  return (
+    <section className="relative min-h-screen overflow-hidden isolate bg-walnut text-cream flex items-end">
+      <Image
+        src={image}
+        alt={alt}
+        fill
+        sizes="100vw"
+        className="object-cover"
+        style={{ objectPosition }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-walnut/88 via-walnut/30 to-walnut/24" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(42,31,23,0.82),rgba(42,31,23,0.24)_48%,rgba(42,31,23,0.54))]" />
+      <div className={
+        align === "right"
+          ? "relative z-10 w-full px-5 sm:px-7 md:px-12 pb-20 md:pb-24 flex justify-end"
+          : "relative z-10 w-full px-5 sm:px-7 md:px-12 pb-20 md:pb-24"
+      }>
+        <div className="max-w-2xl">
+          <div className="text-xs md:text-sm tracking-[0.2em] uppercase text-brass-light">{chapter} · {eyebrow}</div>
+          <h2 className="font-display text-[2.35rem] sm:text-5xl md:text-6xl text-cream mt-4 leading-[1.02]">
+            {heading}
+          </h2>
+          <p className="mt-5 text-cream/72 text-[1rem] sm:text-lg leading-relaxed max-w-xl">{body}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const reviewJsonLd = {
   "@context": "https://schema.org",
@@ -109,13 +89,13 @@ export default function Home() {
 
       <VideoScrubScene
         id="hero"
-        videoSrc="/videos/hero-ramos-v-4-2-scroll.mp4"
-        posterStart="/videos/hero-ramos-v-4-2-poster-start.jpg"
-        posterFinal="/videos/hero-ramos-v-4-2-poster-final.jpg"
-        posterAlt="Partially assembled custom Ramos cabinetry becoming a luxury kitchen"
-        eyebrow="Custom Cabinetry · Finish Carpentry · East Valley"
-        heading="The First Frame of a Room Built With Intention"
-        sub="Before the service list, before the estimate, before the final reveal, there is craft: material, proportion, patience, and the quiet confidence of a room becoming what it was meant to be."
+        videoSrc="/videos/ramos-v2/hero-v2-scroll.mp4"
+        posterStart="/videos/ramos-v2/hero-v2-poster-start.jpg"
+        posterFinal="/videos/ramos-v2/hero-v2-poster-final.jpg"
+        posterAlt="Warm wood grain transforming into Ramos custom cabinetry craftsmanship"
+        eyebrow="Chapter 01 · Craft Begins"
+        heading="Every Masterpiece Begins With a Single Piece of Wood"
+        sub="A scroll-built opening scene for Ramos craftsmanship: raw material, morning light, precision, and the first quiet moment before a room becomes home."
         showCta
         priority
         runwayDesktopVh={280}
@@ -126,157 +106,79 @@ export default function Home() {
         layeredHero
       />
 
-      <TrustBar />
+      <CinematicImageChapter
+        chapter="Chapter 02"
+        eyebrow="The First Cut"
+        heading="The Frame Begins to Explain the Room"
+        body="The story continues from raw material into structure: exposed joinery, drawer boxes, shelves, trim, and cabinet frames beginning to make the work recognizable."
+        image="/images/ramos-v2/chapter-2-first-cut.png"
+        alt="Partially assembled Ramos cabinetry inside a warm luxury woodworking studio"
+        objectPosition="center center"
+      />
 
-      <section className="bg-walnut text-cream reveal-divider-dark">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-end">
-            <div>
-              <Eyebrow>
-                <span className="text-brass-light">The Ramos Story</span>
-              </Eyebrow>
-              <h2 className="font-display text-4xl md:text-6xl mt-5 leading-[1.02] max-w-3xl">
-                From raw material to a room that finally works.
-              </h2>
-            </div>
-            <div className="space-y-6">
-              <p className="text-cream/72 text-lg leading-relaxed">
-                The home page now moves like the work itself: first the material, then the
-                measurement, then the build, then the fit, then the finished room. Every
-                scene points back to the same promise: cabinetry built for your home, not
-                pulled from a shelf.
-              </p>
-              <div className="grid grid-cols-2 gap-px bg-line-dark">
-                {proofPoints.map((p) => (
-                  <div key={p.label} className="bg-walnut-2 p-5">
-                    <div className="font-display text-2xl md:text-3xl text-brass-light">{p.value}</div>
-                    <div className="mt-2 text-xs uppercase tracking-[0.16em] text-cream/52">{p.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-px bg-line-dark mt-16">
-            {storyBeats.map((beat, index) => (
-              <article key={beat.label} className="group bg-walnut min-h-[430px] relative overflow-hidden">
-                <Image
-                  src={beat.image}
-                  alt={beat.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                  className="object-cover opacity-58 group-hover:opacity-72 group-hover:scale-[1.04] transition duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-walnut via-walnut/40 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <div className="text-brass-light text-xs tracking-[0.18em] uppercase">
-                    {String(index + 1).padStart(2, "0")} · {beat.label}
-                  </div>
-                  <h2 className="font-display text-2xl mt-3 leading-tight">{beat.title}</h2>
-                  <p className="mt-4 text-sm leading-relaxed text-cream/66">{beat.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CraftReveal
-        beforeSrc="/images/gallery/raw-lumber-material.jpg"
-        beforeAlt="Raw hardwood lumber board staged for custom cabinetry fabrication"
-        afterSrc="/images/gallery/river-table-island-kitchen.jpg"
-        afterAlt="Finished custom walnut kitchen island with blue river inlay"
-        beforeLabel="Raw Material"
-        afterLabel="Finished Room"
+      <CinematicImageChapter
+        chapter="Chapter 03"
+        eyebrow="Workshop to Home"
+        heading="The Cabinetry Becomes the Anchor"
+        body="The shop gives way to the home without losing the craft. Materials, scale, and light stay connected so the visitor feels the same piece becoming part of a real room."
+        image="/images/ramos-v2/chapter-3-workshop-home.png"
+        alt="Ramos custom cabinetry transitioning from workshop craft into a finished kitchen environment"
+        align="right"
+        objectPosition="center center"
       />
 
       <VideoScrubScene
-        id="process"
-        videoSrc="/videos/ramos-build-wall.mp4"
-        posterStart="/videos/ramos-build-wall-poster-start.jpg"
-        posterFinal="/videos/ramos-build-wall-poster-final.jpg"
-        posterAlt="Custom built-in wood shelving wall with potted greenery in an East Valley home"
-        eyebrow="The Build Scene"
-        heading="Every Line Has to Land Before the Room Feels Finished"
-        sub="Built-ins, vanities, shelves, doors, trim, and cabinet faces only feel calm when the hidden work is exact: level, scribed, joined, and installed with patience."
-        runwayDesktopVh={220}
-        runwayMobileVh={165}
+        id="home-living"
+        videoSrc="/videos/ramos-v2/chapter-4-home-living-scroll.mp4"
+        posterStart="/videos/ramos-v2/chapter-4-poster-start.jpg"
+        posterFinal="/videos/ramos-v2/chapter-4-poster-final.jpg"
+        posterAlt="A luxury Arizona home connected by custom Ramos cabinetry from kitchen to living spaces"
+        eyebrow="Chapter 04 · Where Life Happens"
+        heading="A Home Built Around the Way You Live"
+        sub="Kitchen, pantry, coffee bar, built-ins, fireplace, office, laundry, mudroom, and bath details unfold as one connected Ramos story."
+        runwayDesktopVh={260}
+        runwayMobileVh={190}
+        playback="scrub"
+        copyRevealStart={0.38}
+        copyRevealEnd={0.68}
+      />
+
+      <CinematicImageChapter
+        chapter="Chapter 05"
+        eyebrow="The Details"
+        heading="The Quiet Parts Decide the Quality"
+        body="Wood grain, reveals, miters, edges, hardware, and joinery slow the story down. This is where premium work stops being a promise and becomes visible."
+        image="/images/ramos-v2/chapter-5-details.png"
+        alt="Macro detail of handcrafted Ramos cabinetry with warm wood grain and precision finish work"
+        objectPosition="center center"
+      />
+
+      <CinematicImageChapter
+        chapter="Chapter 06"
+        eyebrow="Across the East Valley"
+        heading="Craftsmanship Carried From Home to Home"
+        body="Ramos work belongs to Arizona homes: Gilbert, Mesa, Chandler, Scottsdale, Tempe, Phoenix, and the neighborhoods where custom detail still matters."
+        image="/images/ramos-v2/chapter-6-east-valley.png"
+        alt="Golden hour East Valley residential landscape representing Ramos service areas"
+        align="right"
+        objectPosition="center center"
+      />
+
+      <VideoScrubScene
+        id="legacy"
+        videoSrc="/videos/ramos-v2/chapter-7-legacy-scroll.mp4"
+        posterStart="/videos/ramos-v2/chapter-7-poster-start.jpg"
+        posterFinal="/videos/ramos-v2/chapter-7-poster-final.jpg"
+        posterAlt="A finished Arizona home glowing at sunset with handcrafted cabinetry inside"
+        eyebrow="Chapter 07 · Legacy"
+        heading="Built to Be Lived In"
+        sub="The final chapter is not about selling. It is the feeling a homeowner has when the house is quiet, the work is finished, and every detail feels permanent."
+        runwayDesktopVh={250}
+        runwayMobileVh={185}
         playback="scrub"
         copyRevealStart={0.42}
         copyRevealEnd={0.72}
       />
-
-      <section className="bg-paper-dim reveal-divider">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28">
-          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20">
-            <div>
-              <Eyebrow>What Gets Solved</Eyebrow>
-              <h2 className="font-display text-3xl md:text-5xl mt-4 leading-tight max-w-xl">
-                The work starts with the problem the room keeps creating.
-              </h2>
-              <p className="mt-6 text-charcoal/66 leading-relaxed max-w-lg">
-                Custom cabinetry is not just nicer boxes. It is a correction: storage,
-                proportion, material, flow, and finish brought into alignment with the way
-                the home is lived in.
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-px bg-line">
-              {challenges.map((c) => (
-                <article key={c.problem} className="bg-paper p-7 md:p-8 min-h-64">
-                  <h3 className="font-display text-xl md:text-2xl leading-tight">{c.problem}</h3>
-                  <p className="mt-5 text-charcoal/68 leading-relaxed text-sm">{c.solution}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
-          <div>
-            <Eyebrow>Project Chapters</Eyebrow>
-            <h2 className="font-display text-3xl md:text-5xl mt-4 leading-tight max-w-3xl">
-              Cabinets, remodels, and finish details built as one connected story.
-            </h2>
-          </div>
-          <Link
-            href="/gallery"
-            className="text-sm text-brass hover:text-charcoal underline underline-offset-4"
-          >
-            View the gallery
-          </Link>
-        </div>
-
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-px bg-line">
-          <div className="bg-paper min-h-[520px] relative overflow-hidden">
-            <Image
-              src="/images/gallery/wet-bar-built-in.jpg"
-              alt="Custom light oak wet bar built-in with open shelving and wine storage"
-              fill
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-walnut/72 via-transparent to-transparent" />
-            <div className="absolute left-0 right-0 bottom-0 p-7 md:p-10 text-cream">
-              <div className="text-xs tracking-[0.18em] uppercase text-brass-light">
-                Built to belong
-              </div>
-              <h3 className="font-display text-3xl md:text-4xl mt-3 max-w-xl leading-tight">
-                The best cabinetry feels permanent the first day it is installed.
-              </h3>
-            </div>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-px bg-line">
-            {serviceStory.map((item) => (
-              <div key={item} className="bg-paper p-7 md:p-8 flex items-center justify-between gap-6">
-                <span className="font-display text-xl">{item}</span>
-                <span className="h-px flex-1 bg-line" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="bg-walnut text-cream reveal-divider-dark">
         <div className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28">
