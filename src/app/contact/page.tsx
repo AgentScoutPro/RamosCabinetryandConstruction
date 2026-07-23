@@ -49,14 +49,14 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="mt-10 aspect-[16/10] overflow-hidden border border-line bg-paper-dim">
+          <div className="mt-10 h-[280px] overflow-hidden border border-line bg-paper-dim sm:aspect-[16/10] sm:h-auto">
             <iframe
               title="C Ramos Cabinetry and Construction LLC Google Map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105636.85933186051!2d-112.08318270273436!3d34.168035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ab92db9736d6f99%3A0x6b0491a3659f5b0a!2sC%20Ramos%20cabinetry%20and%20construction%20LLC.!5e0!3m2!1sen!2sus!4v1784806004996!5m2!1sen!2sus"
               className="h-full w-full"
               style={{ border: 0 }}
               allowFullScreen
-              loading="lazy"
+              loading="eager"
               referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
