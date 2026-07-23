@@ -106,14 +106,20 @@ export default function Home() {
         layeredHero
       />
 
-      <CinematicImageChapter
-        chapter="Chapter 02"
-        eyebrow="The First Cut"
+      <VideoScrubScene
+        id="first-cut"
+        videoSrc="/videos/ramos-v2/chapter-2-first-cut-scroll.mp4"
+        posterStart="/videos/ramos-v2/chapter-2-poster-start.jpg"
+        posterFinal="/videos/ramos-v2/chapter-2-poster-final.jpg"
+        posterAlt="Actual Ramos project cabinetry scroll animation showing the first cut and assembly"
+        eyebrow="Chapter 02 · The First Cut"
         heading="The Frame Begins to Explain the Room"
-        body="The story continues from raw material into structure: exposed joinery, drawer boxes, shelves, trim, and cabinet frames beginning to make the work recognizable."
-        image="/images/ramos-v2/chapter-2-first-cut.png"
-        alt="Partially assembled Ramos cabinetry inside a warm luxury woodworking studio"
-        objectPosition="center center"
+        sub="An actual Ramos project takes over the story here: cabinetry lines, material, and proportion begin to lock into place as the visitor scrolls."
+        runwayDesktopVh={260}
+        runwayMobileVh={190}
+        playback="scrub"
+        copyRevealStart={0.38}
+        copyRevealEnd={0.68}
       />
 
       <CinematicImageChapter
