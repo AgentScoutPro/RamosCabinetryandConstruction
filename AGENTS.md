@@ -42,4 +42,5 @@ All new scroll-driven video sections must use the proven production scrub patter
 - Playback is driven by Framer Motion scroll progress through one `requestAnimationFrame`-batched `currentTime` update per progress change.
 - `fastSeek` is only used during metadata/canplay sync, never as the continuous scroll path.
 - Pacing is controlled by section runway height, not by capping video progress or smoothing currentTime.
+- Scroll-scrub source videos must be encoded for seeking before use. Hero/feature scrub videos need dense keyframes, ideally all-intra for short hero clips (`-g 1 -keyint_min 1 -sc_threshold 0 -bf 0`), because long-GOP AI exports will stutter no matter how clean the React code is.
 - Reduced motion falls back to a static final/poster frame with readable copy.

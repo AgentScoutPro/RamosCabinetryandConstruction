@@ -109,7 +109,7 @@ export default function Home() {
 
       <VideoScrubScene
         id="hero"
-        videoSrc="/videos/hero-ramos-v-4-2.mp4"
+        videoSrc="/videos/hero-ramos-v-4-2-scroll.mp4"
         posterStart="/videos/hero-ramos-v-4-2-poster-start.jpg"
         posterFinal="/videos/hero-ramos-v-4-2-poster-final.jpg"
         posterAlt="Partially assembled custom Ramos cabinetry becoming a luxury kitchen"
