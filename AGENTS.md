@@ -31,3 +31,15 @@ asks to change them.
 
 Avoid generic AI-site aesthetics, abstract gradient hero sections, decorative motion with
 no story job, and copy/visuals that could fit another contractor by swapping the logo.
+
+## Scroll Video Standard
+
+All new scroll-driven video sections must use the proven production scrub pattern from Little Piece of Paradise and the C0D3AI reference sites:
+
+- Use the shared `VideoScrubScene` and `useScrollScrubbedVideo` implementation.
+- Do not create one-off scroll video engines, interpolation loops, autoplay scrubs, or section-specific seek logic.
+- Scrubbed video uses `preload="metadata"`, `muted`, `playsInline`, and a pinned sticky viewport.
+- Playback is driven by Framer Motion scroll progress through one `requestAnimationFrame`-batched `currentTime` update per progress change.
+- `fastSeek` is only used during metadata/canplay sync, never as the continuous scroll path.
+- Pacing is controlled by section runway height, not by capping video progress or smoothing currentTime.
+- Reduced motion falls back to a static final/poster frame with readable copy.

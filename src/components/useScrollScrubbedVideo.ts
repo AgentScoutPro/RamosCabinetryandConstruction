@@ -29,10 +29,15 @@ export function useResponsiveRunway(desktopVh: number, mobileVh: number) {
   return runwayVh;
 }
 
-export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = true, maxProgress = 1) {
+/**
+ * Production scroll-video scrubber, matching the proven Little Piece pattern:
+ * metadata preload, metadata-time sync with fastSeek when available, and one
+ * rAF-batched currentTime assignment per scroll progress change.
+ */
+export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = true) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const durationRef = useRef(0);
-  const targetProgressRef = useRef(0);
+  const latestProgressRef = useRef(0);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -42,38 +47,35 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
-    video.preload = "auto";
+    video.preload = "metadata";
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
 
-    const applyFrame = () => {
+    const seekToProgress = () => {
       const duration = durationRef.current;
-      const video = videoRef.current;
-      if (!video || !duration) return;
+      if (!duration) return;
+      const targetTime = Math.min(Math.max(latestProgressRef.current, 0), 1) * duration;
 
-      const targetTime = Math.min(Math.max(targetProgressRef.current, 0), 1) * maxProgress * duration;
       try {
-        if (Math.abs(video.currentTime - targetTime) > 0.003) {
-          video.currentTime = targetTime;
+        if (typeof video.fastSeek === "function") {
+          video.fastSeek(targetTime);
+          return;
         }
       } catch {
-        // Mobile decoders can reject seeks during warmup; next scroll frame retries.
+        // Safari can throw while a video is still becoming seekable; fall back below.
       }
-    };
 
-    const queueFrame = () => {
-      if (rafRef.current) return;
-      rafRef.current = requestAnimationFrame(() => {
-        rafRef.current = null;
-        applyFrame();
-      });
+      try {
+        video.currentTime = targetTime;
+      } catch {
+        // Leave the poster visible until the next metadata/canplay/scroll event.
+      }
     };
 
     const onLoaded = () => {
       if (Number.isFinite(video.duration) && video.duration > 0) {
         durationRef.current = video.duration;
-        targetProgressRef.current = progress.get();
-        queueFrame();
+        seekToProgress();
       }
     };
 
@@ -95,24 +97,21 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
       video.removeEventListener("canplay", onLoaded);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [enabled, maxProgress, progress]);
+  }, [enabled]);
 
   useMotionValueEvent(progress, "change", (value) => {
     if (!enabled) return;
-    targetProgressRef.current = value;
-    if (rafRef.current) return;
+    latestProgressRef.current = value;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      rafRef.current = null;
       const video = videoRef.current;
       const duration = durationRef.current;
       if (!video || !duration) return;
-      const targetTime = Math.min(Math.max(targetProgressRef.current, 0), 1) * maxProgress * duration;
+      const targetTime = Math.min(Math.max(value, 0), 1) * duration;
       try {
-        if (Math.abs(video.currentTime - targetTime) > 0.003) {
-          video.currentTime = targetTime;
-        }
+        video.currentTime = targetTime;
       } catch {
-        // Mobile decoders can reject seeks during warmup; next scroll frame retries.
+        // Mobile browsers can reject seeks during decoder warmup; next scroll event retries.
       }
     });
   });

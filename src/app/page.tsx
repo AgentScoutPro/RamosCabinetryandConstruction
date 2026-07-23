@@ -118,13 +118,12 @@ export default function Home() {
         sub="Before the service list, before the estimate, before the final reveal, there is craft: material, proportion, patience, and the quiet confidence of a room becoming what it was meant to be."
         showCta
         priority
-        runwayDesktopVh={340}
-        runwayMobileVh={320}
+        runwayDesktopVh={280}
+        runwayMobileVh={180}
         playback="scrub"
         copyRevealStart={0}
         copyRevealEnd={0.28}
         layeredHero
-        scrubEndProgress={1}
       />
 
       <TrustBar />

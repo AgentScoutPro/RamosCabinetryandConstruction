@@ -24,7 +24,6 @@ type VideoScrubSceneProps = {
   copyRevealEnd?: number;
   playback?: "ambient" | "scrub";
   layeredHero?: boolean;
-  scrubEndProgress?: number;
 };
 
 function SceneCopy({
@@ -118,14 +117,13 @@ function ScrubbedScene({
   copyRevealEnd = 0.85,
   playback = "ambient",
   layeredHero = false,
-  scrubEndProgress = 1,
 }: VideoScrubSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const runwayVh = useResponsiveRunway(runwayDesktopVh, runwayMobileVh);
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const isScrubbed = playback === "scrub";
-  const videoRef = useScrollScrubbedVideo(scrollYProgress, isScrubbed, scrubEndProgress);
+  const videoRef = useScrollScrubbedVideo(scrollYProgress, isScrubbed);
 
   // Third keyframe pins the value through progress 1: framer-motion routes
   // 2-point scroll-linked opacity/transform through a native WAAPI
@@ -165,7 +163,7 @@ function ScrubbedScene({
           poster={posterStart}
           muted
           playsInline
-          preload="auto"
+          preload={isScrubbed ? "metadata" : "auto"}
           autoPlay={!isScrubbed}
           loop={!isScrubbed}
           controls={false}
