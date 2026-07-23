@@ -109,18 +109,18 @@ export default function Home() {
 
       <VideoScrubScene
         id="hero"
-        videoSrc="/videos/hero-ramos.mp4"
-        posterStart="/videos/hero-ramos-poster-start.jpg"
-        posterFinal="/videos/hero-ramos-poster-final.jpg"
-        posterAlt="Custom walnut river-table kitchen island with a blue epoxy inlay, built by Ramos Cabinetry & Construction"
+        videoSrc="/videos/ramos-hero-002.mp4"
+        posterStart="/videos/ramos-hero-002-poster-start.jpg"
+        posterFinal="/videos/ramos-hero-002-poster-final.jpg"
+        posterAlt="Blueprint-to-finished custom kitchen transformation showing Ramos cabinetry craftsmanship"
         eyebrow="Custom Cabinetry · Finish Carpentry · East Valley"
-        heading="A Room Should Feel Built for the Life Inside It"
-        sub="Ramos Cabinetry & Construction designs, builds, and installs custom cabinets, remodels, vanities, built-ins, and finish carpentry with Chris Ramos directly involved from measure to final fit."
+        heading="From Blueprint to Built Beautifully"
+        sub="Ramos Cabinetry & Construction turns the first plan into custom cabinets, remodels, built-ins, and finish carpentry shaped around the way your home should live."
         showCta
         priority
-        runwayDesktopVh={155}
-        runwayMobileVh={115}
-        playback="ambient"
+        runwayDesktopVh={220}
+        runwayMobileVh={175}
+        playback="scrub"
         copyRevealStart={0}
         copyRevealEnd={0.18}
       />
