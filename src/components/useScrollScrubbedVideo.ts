@@ -50,7 +50,7 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
-    video.preload = "auto";
+    video.preload = "metadata";
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
 
@@ -94,13 +94,6 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
 
     if (video.readyState >= 1) onLoaded();
 
-    const primePlayback = video.play();
-    if (primePlayback) {
-      primePlayback.then(() => video.pause()).catch(() => {
-        // Autoplay priming is a best-effort mobile decoder hint, not required.
-      });
-    }
-
     return () => {
       video.removeEventListener("loadedmetadata", onLoaded);
       video.removeEventListener("durationchange", onLoaded);
@@ -118,15 +111,6 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
       const duration = durationRef.current;
       if (!video || !duration) return;
       const targetTime = Math.min(Math.max(value, 0), 1) * duration;
-      try {
-        if (typeof video.fastSeek === "function") {
-          video.fastSeek(targetTime);
-          return;
-        }
-      } catch {
-        // Safari can throw while a video is still becoming seekable; fall back below.
-      }
-
       try {
         video.currentTime = targetTime;
       } catch {

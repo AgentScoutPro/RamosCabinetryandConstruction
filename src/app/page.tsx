@@ -118,11 +118,11 @@ export default function Home() {
         sub="Ramos Cabinetry & Construction turns the first plan into custom cabinets, remodels, built-ins, and finish carpentry shaped around the way your home should live."
         showCta
         priority
-        runwayDesktopVh={220}
-        runwayMobileVh={285}
+        runwayDesktopVh={280}
+        runwayMobileVh={180}
         playback="scrub"
         copyRevealStart={0}
-        copyRevealEnd={0.18}
+        copyRevealEnd={0.28}
       />
 
       <TrustBar />

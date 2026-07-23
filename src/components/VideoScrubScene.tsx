@@ -146,16 +146,16 @@ function ScrubbedScene({
       <div className="sticky top-0 h-screen h-dvh overflow-hidden isolate flex flex-col justify-end">
         <motion.video
           ref={isScrubbed ? videoRef : undefined}
-          className="absolute inset-0 w-full h-[104%] object-cover object-[52%_center] sm:object-center"
+          className="absolute inset-0 w-full h-full object-cover"
           src={videoSrc}
           poster={posterStart}
           muted
           playsInline
-          preload="auto"
+          preload={isScrubbed ? "metadata" : "auto"}
           autoPlay={!isScrubbed}
           loop={!isScrubbed}
           controls={false}
-          style={{ scale: videoScale, y: videoY }}
+          style={isScrubbed ? undefined : { scale: videoScale, y: videoY }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
         <motion.div
