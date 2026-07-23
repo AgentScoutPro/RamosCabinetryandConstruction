@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { business, services, cityPages } from "@/lib/site-data";
 
+const facebookUrl = "https://www.facebook.com/share/18f5iss6YR/?mibextid=wwXIfr";
+
 export default function Footer() {
   return (
     <footer className="bg-walnut text-cream/80">
@@ -47,6 +49,17 @@ export default function Footer() {
                 loading="lazy"
                 className="h-[72px] w-auto"
               />
+            </a>
+            <a
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="C Ramos Cabinetry and Construction on Facebook"
+              className="inline-flex h-[44px] w-[44px] items-center justify-center border border-cream/20 text-cream transition-colors hover:border-brass-light hover:text-brass-light"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
+                <path d="M22 12.06C22 6.48 17.52 2 11.94 2S2 6.48 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.5-3.91 3.79-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.91h2.77l-.44 2.91h-2.33V22C18.34 21.24 22 17.08 22 12.06Z" />
+              </svg>
             </a>
           </div>
         </div>

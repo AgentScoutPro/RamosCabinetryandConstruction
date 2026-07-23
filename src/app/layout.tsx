@@ -48,7 +48,7 @@ const jsonLd = {
   })),
   priceRange: "$$",
   sameAs: [
-    "https://www.facebook.com/profile.php?id=100083588461527",
+    "https://www.facebook.com/share/18f5iss6YR/?mibextid=wwXIfr",
     "https://www.yelp.com/biz/c-ramos-cabinetry-and-construction-tempe-2",
     "https://www.bbb.org/us/az/tempe/profile/finish-carpentry/cramos-cabinetry-construction-llc-1126-1000105094",
   ],
