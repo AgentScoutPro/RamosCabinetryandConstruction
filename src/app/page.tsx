@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { business, cityPages, projects, reviews, services } from "@/lib/site-data";
+import { business, cityPages, projects, services } from "@/lib/site-data";
 import { CTABand, Eyebrow, TrustBar } from "@/components/Sections";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import VideoScrubScene from "@/components/VideoScrubScene";
 
 const featuredGallery = [
@@ -64,19 +65,15 @@ function CinematicImageChapter({
 
 const reviewJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Product",
+  "@type": "HomeAndConstructionBusiness",
   name: business.name,
+  url: `https://${business.domain}`, 
+  telephone: business.phone,
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: business.reviewRating,
     reviewCount: business.reviewCount,
   },
-  review: reviews.map((r) => ({
-    "@type": "Review",
-    author: { "@type": "Person", name: r.name },
-    reviewBody: r.text,
-    reviewRating: { "@type": "Rating", ratingValue: "5" },
-  })),
 };
 
 export default function Home() {
@@ -274,35 +271,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-paper-dim reveal-divider">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28">
-          <div className="flex items-end justify-between gap-8 mb-12">
-            <div>
-              <Eyebrow>Homeowner Proof</Eyebrow>
-              <h2 className="font-display text-3xl md:text-5xl mt-4">
-                {business.reviewRating} Stars · {business.reviewCount} Reviews
-              </h2>
-            </div>
-            <Link
-              href="/reviews"
-              className="hidden sm:inline text-sm text-brass hover:text-charcoal underline underline-offset-4"
-            >
-              Read all reviews
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-px bg-line">
-            {reviews.slice(0, 3).map((r) => (
-              <article key={r.name} className="bg-paper p-7 md:p-8 min-h-80">
-                <div className="text-brass text-sm">★★★★★</div>
-                <p className="mt-6 text-charcoal/76 leading-relaxed">&ldquo;{r.text}&rdquo;</p>
-                <div className="mt-7 text-sm text-charcoal/52">
-                  {r.name} · {r.city}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <GoogleReviewsSection />
 
       <TrustBar />
 
