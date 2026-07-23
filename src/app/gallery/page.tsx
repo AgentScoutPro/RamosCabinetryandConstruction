@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { projects } from "@/lib/site-data";
+import Link from "next/link";
+import { galleryCategories, projectGallery } from "@/lib/project-gallery";
 import { PageHero, CTABand } from "@/components/Sections";
 
 export const metadata: Metadata = {
@@ -10,6 +11,13 @@ export const metadata: Metadata = {
 };
 
 export default function GalleryPage() {
+  const firstProjectByCategory = new Map<string, string>();
+  projectGallery.forEach((project) => {
+    if (!firstProjectByCategory.has(project.category)) {
+      firstProjectByCategory.set(project.category, project.slug);
+    }
+  });
+
   return (
     <>
       <PageHero
@@ -19,10 +27,25 @@ export default function GalleryPage() {
       />
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24">
+        <div className="mb-12 flex flex-wrap gap-3">
+          {galleryCategories.map((category) => (
+            <a
+              key={category.slug}
+              href={`#${category.slug}`}
+              className="border border-line px-4 py-2 text-xs uppercase tracking-[0.12em] text-charcoal/70 transition-colors hover:border-brass hover:text-brass"
+            >
+              {category.label}
+            </a>
+          ))}
+        </div>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p) => (
+          {projectGallery.map((p) => (
             <figure key={p.slug} className="group">
-              <div className="relative aspect-[4/5] border border-line overflow-hidden">
+              <div
+                id={firstProjectByCategory.get(p.category) === p.slug ? p.category : undefined}
+                className="relative aspect-[4/5] scroll-mt-28 border border-line overflow-hidden"
+              >
                 <Image
                   src={p.image}
                   alt={p.alt}
@@ -36,8 +59,11 @@ export default function GalleryPage() {
                   <div className="text-cream/60 text-sm mt-1">{p.city}</div>
                 </div>
               </div>
-              <figcaption className="mt-2 text-xs tracking-wide uppercase text-brass">
-                {p.tag}
+              <figcaption className="mt-2 flex items-center justify-between gap-3 text-xs tracking-wide uppercase text-brass">
+                <span>{p.categoryLabel}</span>
+                <Link href={p.serviceHref} className="text-charcoal/45 transition-colors hover:text-brass">
+                  View Service
+                </Link>
               </figcaption>
             </figure>
           ))}

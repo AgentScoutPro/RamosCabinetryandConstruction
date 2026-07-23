@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services, business, cityPages } from "@/lib/site-data";
+import { getGalleryForService } from "@/lib/project-gallery";
 import { PageHero, CTABand, Eyebrow, FAQAccordion, TrustBar } from "@/components/Sections";
 
 export function generateStaticParams() {
@@ -32,6 +34,7 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const otherServices = services.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const serviceGallery = getGalleryForService(service.slug, 6);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -101,6 +104,40 @@ export default async function ServiceDetailPage({
           <FAQAccordion faqs={service.faqs} />
         </div>
       </section>
+
+      {serviceGallery.length > 0 && (
+        <section className="mx-auto max-w-7xl px-5 md:px-8 py-24">
+          <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <Eyebrow>Project Photos</Eyebrow>
+              <h2 className="font-display text-3xl mt-4">Recent {service.name} Work</h2>
+            </div>
+            <Link href="/gallery" className="text-sm text-brass underline underline-offset-4">
+              View Full Gallery
+            </Link>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {serviceGallery.map((project) => (
+              <figure key={project.slug} className="group">
+                <div className="relative aspect-[4/5] overflow-hidden border border-line">
+                  <Image
+                    src={project.image}
+                    alt={project.alt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <figcaption className="mt-3">
+                  <div className="font-display text-lg">{project.title}</div>
+                  <div className="mt-1 text-xs uppercase tracking-[0.12em] text-brass">{project.city}</div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24">
         <Eyebrow>Related Services</Eyebrow>
