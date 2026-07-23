@@ -17,6 +17,9 @@ type VideoScrubSceneProps = {
   heading: string;
   sub: string;
   showCta?: boolean;
+  primaryCtaLabel?: string;
+  secondaryCtaLabel?: string;
+  trustItems?: string[];
   priority?: boolean;
   runwayDesktopVh?: number;
   runwayMobileVh?: number;
@@ -24,6 +27,7 @@ type VideoScrubSceneProps = {
   copyRevealEnd?: number;
   playback?: "ambient" | "scrub";
   layeredHero?: boolean;
+  objectPosition?: string;
 };
 
 function SceneCopy({
@@ -32,6 +36,8 @@ function SceneCopy({
   headingId,
   sub,
   showCta,
+  primaryCtaLabel = "Request a Free Estimate",
+  secondaryCtaLabel,
   priority,
 }: {
   eyebrow: string;
@@ -39,6 +45,8 @@ function SceneCopy({
   headingId: string;
   sub: string;
   showCta?: boolean;
+  primaryCtaLabel?: string;
+  secondaryCtaLabel?: string;
   priority?: boolean;
 }) {
   const HeadingTag = priority ? "h1" : "h2";
@@ -59,13 +67,13 @@ function SceneCopy({
             href="/contact"
             className="px-7 sm:px-8 py-3.5 bg-brass text-walnut text-sm tracking-wide text-center hover:bg-brass-light transition-colors"
           >
-            Request a Free Estimate
+            {primaryCtaLabel}
           </Link>
           <a
             href={business.phoneHref}
             className="px-7 sm:px-8 py-3.5 border border-cream/30 text-cream text-sm tracking-wide text-center hover:border-brass hover:text-brass-light transition-colors"
           >
-            Call {business.phone}
+            {secondaryCtaLabel ?? `Call ${business.phone}`}
           </a>
         </div>
       )}
@@ -78,15 +86,26 @@ function ReducedMotionScene({
   id,
   posterFinal,
   posterAlt,
+  objectPosition = "center center",
   eyebrow,
   heading,
   sub,
   showCta,
+  primaryCtaLabel,
+  secondaryCtaLabel,
   priority,
 }: VideoScrubSceneProps) {
   return (
     <section className="relative min-h-screen flex flex-col justify-end overflow-hidden isolate" aria-labelledby={`${id}-title`}>
-      <Image src={posterFinal} alt={posterAlt} fill priority={priority} sizes="100vw" className="object-cover" />
+      <Image
+        src={posterFinal}
+        alt={posterAlt}
+        fill
+        priority={priority}
+        sizes="100vw"
+        className="object-cover"
+        style={{ objectPosition }}
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
       <div className="relative z-10 px-5 sm:px-7 md:px-12 pb-20 sm:pb-24 md:pb-24">
         <SceneCopy
@@ -95,6 +114,8 @@ function ReducedMotionScene({
           headingId={`${id}-title`}
           sub={sub}
           showCta={showCta}
+          primaryCtaLabel={primaryCtaLabel}
+          secondaryCtaLabel={secondaryCtaLabel}
           priority={priority}
         />
       </div>
@@ -110,6 +131,9 @@ function ScrubbedScene({
   heading,
   sub,
   showCta,
+  primaryCtaLabel = "Request a Private Project Walkthrough",
+  secondaryCtaLabel,
+  trustItems = ["Custom Cabinets", "Finish Carpentry", "Remodel Craft", "East Valley"],
   priority,
   runwayDesktopVh = 240,
   runwayMobileVh = 180,
@@ -117,6 +141,7 @@ function ScrubbedScene({
   copyRevealEnd = 0.85,
   playback = "ambient",
   layeredHero = false,
+  objectPosition = "center center",
 }: VideoScrubSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const runwayVh = useResponsiveRunway(runwayDesktopVh, runwayMobileVh);
@@ -167,7 +192,7 @@ function ScrubbedScene({
           autoPlay={!isScrubbed}
           loop={!isScrubbed}
           controls={false}
-          style={isScrubbed ? undefined : { scale: videoScale, y: videoY }}
+          style={isScrubbed ? { objectPosition } : { scale: videoScale, y: videoY, objectPosition }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
         {layeredHero ? (
@@ -193,7 +218,7 @@ function ScrubbedScene({
                     href="/contact"
                     className="block px-7 sm:px-8 py-3.5 bg-brass text-walnut text-sm tracking-wide text-center hover:bg-brass-light transition-colors"
                   >
-                    Request a Private Project Walkthrough
+                    {primaryCtaLabel}
                   </Link>
                 </motion.div>
                 <motion.div style={{ opacity: secondaryCtaOpacity, y: secondaryCtaY, transform: "translate3d(0,0,0)" }}>
@@ -201,7 +226,7 @@ function ScrubbedScene({
                     href={business.phoneHref}
                     className="block px-7 sm:px-8 py-3.5 border border-cream/30 text-cream text-sm tracking-wide text-center hover:border-brass hover:text-brass-light transition-colors"
                   >
-                    Call {business.phone}
+                    {secondaryCtaLabel ?? `Call ${business.phone}`}
                   </a>
                 </motion.div>
               </div>
@@ -210,10 +235,9 @@ function ScrubbedScene({
               className="mt-8 grid grid-cols-2 sm:flex gap-3 sm:gap-4 text-[0.68rem] sm:text-xs uppercase tracking-[0.16em] text-cream/62"
               style={{ opacity: trustOpacity, y: trustY, transform: "translate3d(0,0,0)" }}
             >
-              <span>Custom Cabinets</span>
-              <span>Finish Carpentry</span>
-              <span>Remodel Craft</span>
-              <span>East Valley</span>
+              {trustItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </motion.div>
           </div>
         ) : (

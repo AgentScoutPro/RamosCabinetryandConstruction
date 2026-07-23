@@ -1,9 +1,9 @@
 export const business = {
-  name: "C Ramos Cabinetry & Construction",
+  name: "C Ramos Cabinetry and Construction LLC",
   shortName: "Ramos Cabinetry & Construction",
   owner: "Chris Ramos",
-  phone: "480-358-8607",
-  phoneHref: "tel:4803588607",
+  phone: "(480) 358-8607",
+  phoneHref: "tel:+14803588607",
   email: "cramoscandc@gmail.com",
   license: "ROC #364821",
   yearsExperience: "15+",
@@ -12,7 +12,7 @@ export const business = {
   tagline: "Custom Cabinetry & Fine Carpentry, Built by Hand in the East Valley",
   city: "Tempe",
   state: "AZ",
-  domain: "https://ramos-cabinetryand-construction.vercel.app",
+  domain: "https://cramoscabinetry.com",
 };
 
 export const serviceAreas = [

@@ -27,9 +27,13 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
 export function CTABand({
   heading = "Ready to Start Your Project?",
   sub = "Call for a free estimate, or send a few details online and we'll follow up within one business day.",
+  primaryLabel = "Request a Free Estimate",
+  secondaryLabel,
 }: {
   heading?: string;
   sub?: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
 }) {
   return (
     <section className="bg-walnut">
@@ -41,13 +45,13 @@ export function CTABand({
             href={business.phoneHref}
             className="w-full sm:w-auto px-8 py-3.5 border border-cream/30 text-cream text-sm tracking-wide hover:border-brass hover:text-brass-light transition-colors"
           >
-            Call {business.phone}
+            {secondaryLabel ?? `Call ${business.phone}`}
           </a>
           <Link
             href="/contact"
             className="w-full sm:w-auto px-8 py-3.5 bg-brass text-walnut text-sm tracking-wide hover:bg-brass-light transition-colors"
           >
-            Request a Free Estimate
+            {primaryLabel}
           </Link>
         </div>
       </div>

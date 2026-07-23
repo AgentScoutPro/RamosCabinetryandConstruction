@@ -4,40 +4,126 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { business } from "@/lib/site-data";
 
-const googleMapsUrl = "https://maps.app.goo.gl/Gxxd7iFsRTGXRWMG7";
-
-const reviewSignals = [
+const clientReviews = [
   {
-    author: "Google Business Profile",
-    initials: "G",
-    time: "Live profile",
+    author: "Keri McCleary",
+    initials: "KM",
+    time: "a month ago",
     location: "Arizona",
     text:
-      "C Ramos cabinetry and construction LLC. is listed on Google as a 5.0-rated cabinet maker serving Arizona homeowners.",
+      "I had a wonderful experience with my cabinet installation project. The craftsmanship and attention to detail were excellent, and everything was installed beautifully and professionally. Communication throughout the process was great, the …",
   },
   {
-    author: "Verified Profile Detail",
-    initials: "5.0",
-    time: "Google Maps",
-    location: "Cabinet maker",
+    author: "Fran Merz",
+    initials: "FM",
+    time: "7 months ago",
+    location: "Arizona",
     text:
-      "The public Google Maps profile confirms a 5.0 rating, open 24 hours, and direct phone access for new cabinetry and construction inquiries.",
+      "The cabinets in our new bathroom are high-quality with excellent functionality, durable and flawless. The workmanship is superb. Chris was very professional, and the pride he takes in his work emphasizes his personal investment and high standards beyond just a job. I would recommend this company without hesitation.",
   },
   {
-    author: "Direct Contact",
+    author: "Chelsie Grassilli",
+    initials: "CG",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "I had a custom coffee table built by C Ramos Cabinets and Construction, and I couldn’t be happier with the result! I love doing puzzles and wanted a pullout section that I could do my puzzles on and put it away to store safely when I wasn’t …",
+  },
+  {
+    author: "Chris Reddick",
     initials: "CR",
-    time: "Google Maps",
-    location: "(480) 358-8607",
-    text:
-      "Visitors can leave the site and read the live Google profile directly, keeping the review experience tied to the actual Ramos listing.",
-  },
-  {
-    author: "Real Homeowner Proof",
-    initials: "AZ",
-    time: "Ramos profile",
+    time: "3 months ago",
     location: "Arizona",
     text:
-      "This section intentionally points to the live Google listing instead of using invented review quotes, names, or locations.",
+      "Chris came out and did some cabinets for me in my kitchen he was able to make the whole process super simple he is a true craftsmen I watched him build some of the cabinets wile I was home and he truly is a professional at what he does if I …",
+  },
+  {
+    author: "Tiffanie Wade",
+    initials: "TW",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "Chris is absolutely amazing at cabinetry work! If you're looking for the best, look no further! My new kitchen and bathrooms are so beautiful. Chris was very professional and upfront with any and all questions my husband and I had. Our job …",
+  },
+  {
+    author: "Mikaella Carpeso",
+    initials: "MC",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "So pleased we got to work with Chris. He is so easy to work with and we greatly appreciate the quality of his work! Highly recommend his company and will definitely work with him again in the future.",
+  },
+  {
+    author: "Geoffrey Hoffman",
+    initials: "GH",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "Chris is one of those people that feels like a family member from the moment you start working with him. Professional, honest, and tries to give you options to save money. And of course he does great work.",
+  },
+  {
+    author: "Nina Elli",
+    initials: "NE",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "Love working with Chris who was able to remodel my counter kitchen counter. With the new counter top we are able to have more living room space in our home. While remodeling Chris was able to hear my dogs health concerns and made us a …",
+  },
+  {
+    author: "LORI Arnold",
+    initials: "LA",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "I can’t recommend C Ramos Cabinetry and Construction enough! From start to finish, they exceeded all of my expectations. The team was incredibly thorough, paying close attention to every detail to ensure that my vision came to life …",
+  },
+  {
+    author: "Angelica Elliott",
+    initials: "AE",
+    time: "11 months ago",
+    location: "Arizona",
+    text:
+      "Excellent work! Happy with cabinet installation and countertop. Answered all questions in timely manner and very quick to respond. Highly recommend. A+++",
+  },
+  {
+    author: "Cheryl Eagy",
+    initials: "CE",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "Professional honest reliable. They installed my laundry room cabinets and did a beautiful job accent wall that I am really proud of.",
+  },
+  {
+    author: "Shelby Moody",
+    initials: "SM",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "Chris did an amazing job at fixing my dog chewed kitchen cabinets. They look new!",
+  },
+  {
+    author: "Karina Rivera",
+    initials: "KR",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "He is the best at what he does! Couldn’t be happier with everything! I thought I was picky, but he is a perfectionist like me. Never felt like herushed his work. Yet! Still got the job done fast. Don’t hesitate to reach out to him! You will not regret it! This guy can do it all!",
+  },
+  {
+    author: "John Hunter",
+    initials: "JH",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "This guy does amazing work! Super happy with the results! 100% will recommend to everyone that needs this type of work.",
+  },
+  {
+    author: "Allison Danielle",
+    initials: "AD",
+    time: "a year ago",
+    location: "Arizona",
+    text:
+      "It’s a pleasure working with Chris. I love my hallway and bathroom cabinets!",
   },
 ];
 
@@ -78,7 +164,7 @@ function Stars({ size = "sm" }: { size?: "sm" | "lg" }) {
   );
 }
 
-function ReviewSignalCard({ signal }: { signal: (typeof reviewSignals)[number] }) {
+function ReviewCard({ review }: { review: (typeof clientReviews)[number] }) {
   return (
     <article className="flex min-h-[18rem] w-[300px] shrink-0 select-none flex-col gap-4 border border-line bg-paper p-6 shadow-[0_2px_12px_rgba(36,29,22,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_16px_42px_rgba(36,29,22,0.10)] sm:w-[340px]">
       <div className="flex items-center justify-between gap-3">
@@ -88,15 +174,15 @@ function ReviewSignalCard({ signal }: { signal: (typeof reviewSignals)[number] }
           <span className="text-[10px] font-medium tracking-wide text-charcoal/45">Google</span>
         </div>
       </div>
-      <p className="flex-1 text-sm leading-relaxed text-charcoal/68">&ldquo;{signal.text}&rdquo;</p>
+      <p className="flex-1 text-sm leading-relaxed text-charcoal/68">&ldquo;{review.text}&rdquo;</p>
       <div className="flex items-center gap-3 border-t border-line pt-3">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-paper-dim text-[11px] font-semibold text-brass">
-          {signal.initials}
+          {review.initials}
         </div>
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-charcoal">{signal.author}</p>
+          <p className="truncate text-sm font-semibold text-charcoal">{review.author}</p>
           <p className="truncate text-xs text-charcoal/42">
-            {signal.time} · {signal.location}
+            {review.time} · {review.location}
           </p>
         </div>
       </div>
@@ -106,7 +192,7 @@ function ReviewSignalCard({ signal }: { signal: (typeof reviewSignals)[number] }
 
 export default function GoogleReviewsSection() {
   const [paused, setPaused] = useState(false);
-  const railItems = useMemo(() => [...reviewSignals, ...reviewSignals], []);
+  const railItems = useMemo(() => [...clientReviews, ...clientReviews], []);
 
   return (
     <section className="overflow-hidden bg-paper py-20 md:py-28" aria-label="Google reviews">
@@ -129,11 +215,11 @@ export default function GoogleReviewsSection() {
       `}</style>
 
       <div className="mx-auto mb-14 max-w-7xl px-5 text-center md:px-8">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-brass">Real Google Profile</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-brass">Real Client Reviews</p>
         <h2 className="font-display text-4xl leading-tight text-charcoal md:text-6xl">
-          What Arizona Homeowners
+          Trusted by Homeowners Across
           <br />
-          <span className="text-brass">See First.</span>
+          <span className="text-brass">Tempe, Gilbert, Mesa &amp; the East Valley</span>
         </h2>
 
         <div className="mt-8 inline-flex flex-col items-center gap-4 border border-line bg-paper-dim px-7 py-5 shadow-[0_2px_12px_rgba(36,29,22,0.04)] sm:flex-row sm:gap-6">
@@ -171,7 +257,7 @@ export default function GoogleReviewsSection() {
             }}
           >
             {railItems.map((signal, index) => (
-              <ReviewSignalCard key={`${signal.author}-${index}`} signal={signal} />
+              <ReviewCard key={`${signal.author}-${index}`} review={signal} />
             ))}
           </div>
         </div>
@@ -179,13 +265,11 @@ export default function GoogleReviewsSection() {
 
       <div className="mt-12 px-5 text-center">
         <Link
-          href={googleMapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/reviews"
           className="inline-flex items-center gap-2.5 text-sm font-medium text-charcoal/55 transition-colors duration-200 hover:text-brass"
         >
           <GoogleIcon size={18} />
-          Read all reviews on Google
+          Read All Reviews
           <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
           </svg>

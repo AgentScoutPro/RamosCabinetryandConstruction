@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Licensed, Bonded and Insured - C Ramos Cabinetry and Construction</title>
+  <desc id="desc">Ramos trust badge with ROC number 364821.</desc>
+  <rect x="8" y="8" width="144" height="144" rx="72" fill="#241a13"/>
+  <rect x="17" y="17" width="126" height="126" rx="63" fill="none" stroke="#c9a06a" stroke-width="3"/>
+  <path d="M80 38l31 13v24c0 23-13 39-31 48-18-9-31-25-31-48V51l31-13z" fill="#f2ead9"/>
+  <path d="M66 80l9 9 21-27" fill="none" stroke="#8a5a2b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="29" text-anchor="middle" fill="#c9a06a" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1.2">C RAMOS</text>
+  <text x="80" y="131" text-anchor="middle" fill="#f2ead9" font-family="Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="1">ROC #364821</text>
+  <text x="80" y="144" text-anchor="middle" fill="#c9a06a" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing=".6">LICENSED BONDED INSURED</text>
+</svg>

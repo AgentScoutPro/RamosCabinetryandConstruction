@@ -1,9 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+import type { Project } from "@/lib/site-data";
 import { business, cityPages, projects, services } from "@/lib/site-data";
-import { CTABand, Eyebrow, TrustBar } from "@/components/Sections";
+import { CTABand, Eyebrow, FAQAccordion } from "@/components/Sections";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import VideoScrubScene from "@/components/VideoScrubScene";
+
+export const metadata: Metadata = {
+  title: "Custom Cabinets & Remodeling in Phoenix & East Valley, AZ | C Ramos Cabinetry",
+  description:
+    "Family-owned custom cabinet & remodeling contractor serving Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix. Licensed, bonded & insured. Free estimates — call (480) 358-8607.",
+  alternates: {
+    canonical: "https://cramoscabinetry.com/",
+  },
+  openGraph: {
+    title: "Custom Cabinets & Remodeling in Phoenix & East Valley, AZ",
+    description:
+      "Family-owned cabinetry & remodeling craftsmanship for Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix. Licensed ROC — free estimates.",
+    type: "website",
+    url: "https://cramoscabinetry.com/",
+    images: [
+      {
+        url: "https://cramoscabinetry.com/images/og/ramos-cabinetry-hero-kitchen.jpg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const featuredGallery = [
   projects[0],
@@ -14,74 +44,93 @@ const featuredGallery = [
   projects[6],
 ];
 
-
-function CinematicImageChapter({
-  chapter,
-  eyebrow,
-  heading,
-  body,
-  image,
-  alt,
-  align = "left",
-  objectPosition = "center",
-}: {
-  chapter: string;
-  eyebrow: string;
-  heading: string;
-  body: string;
-  image: string;
-  alt: string;
-  align?: "left" | "right";
-  objectPosition?: string;
-}) {
-  return (
-    <section className="relative min-h-screen overflow-hidden isolate bg-walnut text-cream flex items-end">
-      <Image
-        src={image}
-        alt={alt}
-        fill
-        sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-walnut/88 via-walnut/30 to-walnut/24" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(42,31,23,0.82),rgba(42,31,23,0.24)_48%,rgba(42,31,23,0.54))]" />
-      <div className={
-        align === "right"
-          ? "relative z-10 w-full px-5 sm:px-7 md:px-12 pb-20 md:pb-24 flex justify-end"
-          : "relative z-10 w-full px-5 sm:px-7 md:px-12 pb-20 md:pb-24"
-      }>
-        <div className="max-w-2xl">
-          <div className="text-xs md:text-sm tracking-[0.2em] uppercase text-brass-light">{chapter} · {eyebrow}</div>
-          <h2 className="font-display text-[2.35rem] sm:text-5xl md:text-6xl text-cream mt-4 leading-[1.02]">
-            {heading}
-          </h2>
-          <p className="mt-5 text-cream/72 text-[1rem] sm:text-lg leading-relaxed max-w-xl">{body}</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const reviewJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  name: business.name,
-  url: `https://${business.domain}`, 
-  telephone: business.phone,
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: business.reviewRating,
-    reviewCount: business.reviewCount,
+const homeFaqs = [
+  {
+    q: "How much does custom cabinetry cost in the Phoenix area?",
+    a: "Cost depends on cabinet style, material, and project scope. We provide free, no-obligation estimates for homeowners in Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix.",
   },
+  {
+    q: "Do you offer free estimates?",
+    a: "Yes. Every project starts with a free, in-home or virtual estimate.",
+  },
+  {
+    q: "Are you licensed and insured?",
+    a: "Yes. C Ramos Cabinetry and Construction LLC is licensed, bonded, and insured.",
+  },
+  {
+    q: "What areas do you serve?",
+    a: "We serve the East Valley including Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix.",
+  },
+  {
+    q: "How long does a kitchen remodel take?",
+    a: "Most kitchen remodels take a few weeks depending on scope; timelines are confirmed during your estimate.",
+  },
+  {
+    q: "Do you build custom or semi-custom cabinets?",
+    a: "Both. We build fully custom cabinetry as well as semi-custom options to fit a range of budgets and timelines.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homeFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
 };
+
+const serviceDescriptions: Record<string, string> = {
+  "custom-cabinets": "Custom and semi-custom cabinetry for kitchens, bathrooms, and built-ins.",
+  "kitchen-remodeling": "Full kitchen remodels focused on layout, storage, and finish quality.",
+  "bathroom-remodeling": "Vanities, cabinetry, and finish carpentry for cleaner, more functional bathrooms.",
+  "cabinet-installation": "Precision installation, hardware, and repair for new or existing cabinetry.",
+  "finish-carpentry": "Trim, built-ins, mantels, shiplap, wainscoting, and detail carpentry.",
+  "home-remodeling": "Broader residential remodeling and construction projects.",
+};
+
+const serviceImages: Record<string, Project> = {
+  "custom-cabinets": projects[0],
+  "kitchen-remodeling": projects[1],
+  "bathroom-remodeling": projects[4],
+  "cabinet-installation": projects[5],
+  "finish-carpentry": projects[2],
+  "home-remodeling": projects[3],
+};
+
+const whyChoose = [
+  {
+    title: "Family-Owned, Directly Overseen",
+    body: "Chris Ramos personally manages every project.",
+  },
+  {
+    title: "15+ Years of Craftsmanship",
+    body: "Deep experience in cabinetry and remodeling.",
+  },
+  {
+    title: "Licensed, Bonded & Insured",
+    body: "ROC-licensed with full insurance coverage.",
+  },
+  {
+    title: "Custom & Semi-Custom Options",
+    body: "Cabinetry built to fit the home and budget.",
+  },
+  {
+    title: "Local, East Valley Focused",
+    body: "Deep familiarity with Tempe, Gilbert, Mesa, Chandler, Scottsdale homes.",
+  },
+];
 
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <VideoScrubScene
@@ -90,10 +139,18 @@ export default function Home() {
         posterStart="/videos/ramos-v2/hero-v2-poster-start.jpg"
         posterFinal="/videos/ramos-v2/hero-v2-poster-final.jpg"
         posterAlt="Warm wood grain transforming into Ramos custom cabinetry craftsmanship"
-        eyebrow="Chapter 01 · Craft Begins"
-        heading="Every Masterpiece Begins With a Single Piece of Wood"
-        sub="A scroll-built opening scene for Ramos craftsmanship: raw material, morning light, precision, and the first quiet moment before a room becomes home."
+        eyebrow="Family-Owned Custom Cabinetry & Remodeling — Serving Tempe & the East Valley"
+        heading="Custom Cabinets & Home Remodeling for Phoenix and East Valley Homes"
+        sub="C Ramos Cabinetry and Construction LLC builds custom cabinets, kitchen remodels, bathroom upgrades, and finish carpentry with the kind of craftsmanship homeowners notice in every detail. Family-owned and personally overseen by Chris Ramos, we serve Tempe, Gilbert, Mesa, Chandler, Scottsdale, and the surrounding East Valley."
         showCta
+        primaryCtaLabel="Get a Free Estimate"
+        secondaryCtaLabel="Call (480) 358-8607"
+        trustItems={[
+          "Licensed, Bonded & Insured",
+          "ROC #364821",
+          "Family-Owned",
+          "16+ Five-Star Reviews",
+        ]}
         priority
         runwayDesktopVh={280}
         runwayMobileVh={180}
@@ -109,63 +166,36 @@ export default function Home() {
         posterStart="/videos/ramos-v2/chapter-2-poster-start.jpg"
         posterFinal="/videos/ramos-v2/chapter-2-poster-final.jpg"
         posterAlt="Actual Ramos project cabinetry scroll animation showing the first cut and assembly"
-        eyebrow="Chapter 02 · The First Cut"
-        heading="The Frame Begins to Explain the Room"
-        sub="An actual Ramos project takes over the story here: cabinetry lines, material, and proportion begin to lock into place as the visitor scrolls."
+        eyebrow="Custom Cabinetry and Remodeling Built Around the Way You Live"
+        heading="Custom Cabinetry and Remodeling Built Around the Way You Live"
+        sub="For over 15 years, C Ramos Cabinetry and Construction has helped East Valley homeowners turn kitchens, bathrooms, and everyday living spaces into rooms that work as beautifully as they look. As a family-owned company, every project is personally overseen by Chris Ramos — from the first measurement to the final soft-close hinge."
         runwayDesktopVh={260}
         runwayMobileVh={190}
         playback="scrub"
         copyRevealStart={0.38}
         copyRevealEnd={0.68}
+        objectPosition="48% center"
       />
 
-      <CinematicImageChapter
-        chapter="Chapter 03"
-        eyebrow="Workshop to Home"
-        heading="The Cabinetry Becomes the Anchor"
-        body="The shop gives way to the home without losing the craft. Materials, scale, and light stay connected so the visitor feels the same piece becoming part of a real room."
-        image="/images/ramos-v2/chapter-3-workshop-home.png"
-        alt="Ramos custom cabinetry transitioning from workshop craft into a finished kitchen environment"
-        align="right"
-        objectPosition="center center"
-      />
-
-      <VideoScrubScene
-        id="home-living"
-        videoSrc="/videos/ramos-v2/chapter-4-home-living-scroll.mp4"
-        posterStart="/videos/ramos-v2/chapter-4-poster-start.jpg"
-        posterFinal="/videos/ramos-v2/chapter-4-poster-final.jpg"
-        posterAlt="A luxury Arizona home connected by custom Ramos cabinetry from kitchen to living spaces"
-        eyebrow="Chapter 04 · Where Life Happens"
-        heading="A Home Built Around the Way You Live"
-        sub="Kitchen, pantry, coffee bar, built-ins, fireplace, office, laundry, mudroom, and bath details unfold as one connected Ramos story."
-        runwayDesktopVh={260}
-        runwayMobileVh={190}
-        playback="scrub"
-        copyRevealStart={0.38}
-        copyRevealEnd={0.68}
-      />
-
-      <CinematicImageChapter
-        chapter="Chapter 05"
-        eyebrow="The Details"
-        heading="The Quiet Parts Decide the Quality"
-        body="Wood grain, reveals, miters, edges, hardware, and joinery slow the story down. This is where premium work stops being a promise and becomes visible."
-        image="/images/ramos-v2/chapter-5-details.png"
-        alt="Macro detail of handcrafted Ramos cabinetry with warm wood grain and precision finish work"
-        objectPosition="center center"
-      />
-
-      <CinematicImageChapter
-        chapter="Chapter 06"
-        eyebrow="Across the East Valley"
-        heading="Craftsmanship Carried From Home to Home"
-        body="Ramos work belongs to Arizona homes: Gilbert, Mesa, Chandler, Scottsdale, Tempe, Phoenix, and the neighborhoods where custom detail still matters."
-        image="/images/ramos-v2/chapter-6-east-valley.png"
-        alt="Golden hour East Valley residential landscape representing Ramos service areas"
-        align="right"
-        objectPosition="center center"
-      />
+      <section className="bg-paper px-5 md:px-8 py-16 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <p className="max-w-4xl text-lg leading-relaxed text-charcoal/70">
+            For over 15 years, C Ramos Cabinetry and Construction has helped East Valley
+            homeowners turn kitchens, bathrooms, and everyday living spaces into rooms that work
+            as beautifully as they look. As a family-owned company, every project is personally
+            overseen by Chris Ramos — from the first measurement to the final soft-close hinge.
+            Whether it's a full custom cabinetry build, a{" "}
+            <Link href="/services/kitchen-remodeling" className="text-brass underline underline-offset-4">
+              kitchen remodel in Gilbert
+            </Link>
+            , or{" "}
+            <Link href="/services/finish-carpentry" className="text-brass underline underline-offset-4">
+              finish carpentry in Tempe
+            </Link>
+            , the same standard of craftsmanship and honest communication applies to every job.
+          </p>
+        </div>
+      </section>
 
       <section className="bg-walnut text-cream reveal-divider-dark">
         <div className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28">
@@ -175,12 +205,12 @@ export default function Home() {
                 <span className="text-brass-light">Services</span>
               </Eyebrow>
               <h2 className="font-display text-3xl md:text-5xl mt-4 leading-tight">
-                Choose the chapter your home needs next.
+                Cabinetry and Remodeling Services for Phoenix & East Valley Homeowners
               </h2>
             </div>
             <p className="text-cream/62 max-w-md leading-relaxed">
-              The home page introduces the craft; the service pages keep the same SEO
-              structure and go deeper into each project type.
+              Custom and semi-custom cabinetry, kitchen remodeling, bathroom upgrades,
+              installation, finish carpentry, and broader home remodeling for East Valley homes.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-line-dark">
@@ -188,19 +218,55 @@ export default function Home() {
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="group bg-walnut-2 hover:bg-[#3f2e20] transition-colors p-7 md:p-8 min-h-72 flex flex-col"
+                className={
+                  index === 0
+                    ? "group bg-walnut-2 hover:bg-[#3f2e20] transition-colors sm:col-span-2 lg:col-span-2 grid md:grid-cols-[1fr_0.9fr] min-h-80 overflow-hidden"
+                    : "group bg-walnut-2 hover:bg-[#3f2e20] transition-colors min-h-80 flex flex-col overflow-hidden"
+                }
               >
-                <span className="text-brass-light text-xs tracking-[0.18em] uppercase">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-2xl mt-5 group-hover:text-brass-light transition-colors">
-                  {s.name}
-                </h3>
-                <p className="mt-4 text-cream/62 leading-relaxed text-sm">{s.heroSub}</p>
-                <span className="mt-auto pt-8 text-sm text-brass-light underline underline-offset-4">
-                  Learn more
-                </span>
+                <div className="p-7 md:p-8 flex flex-col">
+                  <span className="text-brass-light text-xs tracking-[0.18em] uppercase">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-2xl mt-5 group-hover:text-brass-light transition-colors">
+                    {s.name}
+                  </h3>
+                  <p className="mt-4 text-cream/62 leading-relaxed text-sm">
+                    {serviceDescriptions[s.slug] ?? s.heroSub}
+                  </p>
+                  <span className="mt-auto pt-8 text-sm text-brass-light underline underline-offset-4">
+                    Learn More →
+                  </span>
+                </div>
+                <div className="relative aspect-[4/3] md:aspect-auto min-h-52">
+                  <Image
+                    src={serviceImages[s.slug]?.image ?? projects[0].image}
+                    alt={serviceImages[s.slug]?.alt ?? `${s.name} by C Ramos Cabinetry and Construction`}
+                    fill
+                    sizes={index === 0 ? "(max-width: 1024px) 100vw, 45vw" : "(max-width: 1024px) 100vw, 30vw"}
+                    className="object-cover opacity-82 group-hover:scale-[1.04] transition duration-700"
+                  />
+                </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-paper px-5 md:px-8 py-20 md:py-28 reveal-divider">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-3xl">
+            <Eyebrow>Why Choose Ramos</Eyebrow>
+            <h2 className="font-display text-3xl md:text-5xl mt-4 leading-tight">
+              Why East Valley Homeowners Choose C Ramos Cabinetry and Construction
+            </h2>
+          </div>
+          <div className="mt-12 grid md:grid-cols-5 gap-px bg-line">
+            {whyChoose.map((item) => (
+              <div key={item.title} className="bg-paper-dim p-6 md:p-7 min-h-52">
+                <h3 className="font-display text-xl leading-tight">{item.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-charcoal/65">{item.body}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -212,12 +278,12 @@ export default function Home() {
             <div>
               <Eyebrow>Real Work</Eyebrow>
               <h2 className="font-display text-3xl md:text-5xl mt-4 leading-tight">
-                Proof you can see in the details.
+                Recent Cabinetry & Remodeling Projects Across the Valley
               </h2>
             </div>
             <p className="text-charcoal/62 max-w-md leading-relaxed">
-              Finished rooms, mid-install moments, raw material, and detail work all stay
-              visible because the process is part of the trust.
+              Finished rooms, mid-install moments, raw material, and detail work all stay visible
+              because the process is part of the trust.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-px bg-line">
@@ -233,11 +299,18 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-5">
-                  <div className="text-xs tracking-[0.14em] uppercase text-brass">{project.tag}</div>
+                  <div className="text-xs tracking-[0.14em] uppercase text-brass">
+                    {project.city}
+                  </div>
                   <h3 className="font-display text-xl mt-2">{project.title}</h3>
                 </div>
               </Link>
             ))}
+          </div>
+          <div className="mt-10">
+            <Link href="/gallery" className="text-sm text-brass underline underline-offset-4">
+              View the Full Project Gallery
+            </Link>
           </div>
         </div>
       </section>
@@ -247,13 +320,16 @@ export default function Home() {
           <div>
             <Eyebrow>East Valley</Eyebrow>
             <h2 className="font-display text-3xl md:text-5xl mt-4 leading-tight">
-              Local work, local homes, one direct path to Chris.
+              Proudly Serving Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix
             </h2>
             <p className="mt-6 text-charcoal/66 leading-relaxed">
-              Ramos Cabinetry & Construction serves Tempe, Gilbert, Mesa, Chandler,
-              Scottsdale, Phoenix, and surrounding East Valley neighborhoods with custom
-              cabinetry and remodel work built for Arizona homes.
+              C Ramos Cabinetry and Construction serves homeowners throughout the East Valley,
+              from Tempe to Florence along the I-17 corridor. Explore cabinetry and remodeling
+              services in your city:
             </p>
+            <Link href="/service-areas" className="inline-block mt-8 text-sm text-brass underline underline-offset-4">
+              See All Service Areas
+            </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-line">
             {cityPages.map((c) => (
@@ -263,7 +339,7 @@ export default function Home() {
                 className="bg-paper-dim hover:bg-paper transition-colors p-7 min-h-36 flex items-end"
               >
                 <span className="font-display text-2xl hover:text-brass transition-colors">
-                  {c.city}
+                  {c.city}, AZ
                 </span>
               </Link>
             ))}
@@ -273,27 +349,19 @@ export default function Home() {
 
       <GoogleReviewsSection />
 
-      <TrustBar />
+      <section className="mx-auto max-w-4xl px-5 md:px-8 py-20 md:py-28">
+        <Eyebrow>FAQ</Eyebrow>
+        <h2 className="font-display text-3xl md:text-5xl mt-4 mb-10 leading-tight">
+          Frequently Asked Questions
+        </h2>
+        <FAQAccordion faqs={homeFaqs} />
+      </section>
 
       <CTABand
-        heading="Start With the Room You Want to Change"
-        sub="Call for a free, no-pressure estimate, or send a few project details online and Chris will follow up within one business day."
-      />
-
-      <VideoScrubScene
-        id="legacy"
-        videoSrc="/videos/ramos-v2/chapter-7-legacy-scroll.mp4"
-        posterStart="/videos/ramos-v2/chapter-7-poster-start.jpg"
-        posterFinal="/videos/ramos-v2/chapter-7-poster-final.jpg"
-        posterAlt="A finished Arizona home glowing at sunset with handcrafted cabinetry inside"
-        eyebrow="Chapter 07 · Legacy"
-        heading="Built to Be Lived In"
-        sub="The final chapter is not about selling. It is the feeling a homeowner has when the house is quiet, the work is finished, and every detail feels permanent."
-        runwayDesktopVh={250}
-        runwayMobileVh={185}
-        playback="scrub"
-        copyRevealStart={0.42}
-        copyRevealEnd={0.72}
+        heading="Ready to Start Your Cabinetry or Remodeling Project?"
+        sub="Get a free, no-pressure estimate from a family-owned team that treats your home like their own. Serving Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix."
+        primaryLabel="Get a Free Estimate"
+        secondaryLabel="Call (480) 358-8607"
       />
     </>
   );

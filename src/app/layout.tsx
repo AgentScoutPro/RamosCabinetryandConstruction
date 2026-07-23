@@ -20,27 +20,38 @@ export const metadata: Metadata = {
     siteName: business.shortName,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://cramoscabinetry.com/images/og/ramos-cabinetry-hero-kitchen.jpg",
+      },
+    ],
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": ["HomeAndConstructionBusiness", "GeneralContractor"],
+  "@type": "GeneralContractor",
   name: business.name,
-  telephone: business.phone,
+  url: `${business.domain}/`,
+  telephone: "+14803588607",
   email: business.email,
-  image: `${business.domain}/og-image.jpg`,
+  image: "https://cramoscabinetry.com/images/og/ramos-cabinetry-hero-kitchen.jpg",
   address: {
     "@type": "PostalAddress",
     addressLocality: business.city,
     addressRegion: business.state,
     addressCountry: "US",
   },
-  areaServed: ["Tempe", "Gilbert", "Mesa", "Chandler", "Scottsdale", "Phoenix"].map((c) => ({
+  areaServed: ["Tempe, AZ", "Gilbert, AZ", "Mesa, AZ", "Chandler, AZ", "Scottsdale, AZ", "Phoenix, AZ"].map((c) => ({
     "@type": "City",
     name: c,
   })),
   priceRange: "$$",
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=100083588461527",
+    "https://www.yelp.com/biz/c-ramos-cabinetry-and-construction-tempe-2",
+    "https://www.bbb.org/us/az/tempe/profile/finish-carpentry/cramos-cabinetry-construction-llc-1126-1000105094",
+  ],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5.0",
@@ -54,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-US">
       <body className="antialiased">
         <script
           type="application/ld+json"

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { business, services, cityPages } from "@/lib/site-data";
 
 export default function Footer() {
@@ -22,6 +23,32 @@ export default function Footer() {
           <p className="mt-4 text-xs text-cream/50">
             Licensed, Bonded &amp; Insured · {business.license}
           </p>
+          <div className="mt-6 flex flex-wrap items-center gap-6">
+            <Image
+              src="/images/trust/ramos-trust-badge.svg"
+              alt="Licensed, Bonded & Insured — C Ramos Cabinetry and Construction, ROC #364821"
+              width={80}
+              height={80}
+              loading="lazy"
+              className="h-[72px] w-auto"
+            />
+            <a
+              href="https://www.bbb.org/us/az/tempe/profile/finish-carpentry/cramos-cabinetry-construction-llc-1126-1000105094"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              aria-label="C Ramos Cabinetry and Construction BBB Accredited Business Profile"
+              className="inline-flex"
+            >
+              <Image
+                src="/images/trust/bbb-accredited-seal.png"
+                alt="BBB Accredited Business seal"
+                width={132}
+                height={200}
+                loading="lazy"
+                className="h-[72px] w-auto"
+              />
+            </a>
+          </div>
         </div>
 
         <div>
@@ -53,11 +80,12 @@ export default function Footer() {
         <div>
           <h3 className="text-xs tracking-[0.14em] uppercase text-brass-light mb-4">Company</h3>
           <ul className="space-y-2.5">
+            <li><Link href="/" className="text-sm text-cream/70 hover:text-cream transition-colors">Home</Link></li>
             <li><Link href="/about" className="text-sm text-cream/70 hover:text-cream transition-colors">About</Link></li>
+            <li><Link href="/contact" className="text-sm text-cream/70 hover:text-cream transition-colors">Contact</Link></li>
             <li><Link href="/gallery" className="text-sm text-cream/70 hover:text-cream transition-colors">Gallery</Link></li>
             <li><Link href="/reviews" className="text-sm text-cream/70 hover:text-cream transition-colors">Reviews</Link></li>
             <li><Link href="/service-areas" className="text-sm text-cream/70 hover:text-cream transition-colors">Service Areas</Link></li>
-            <li><Link href="/contact" className="text-sm text-cream/70 hover:text-cream transition-colors">Contact</Link></li>
           </ul>
         </div>
       </div>
