@@ -28,6 +28,7 @@ type VideoScrubSceneProps = {
   playback?: "ambient" | "scrub";
   layeredHero?: boolean;
   objectPosition?: string;
+  holdPosterOnScrubStart?: boolean;
 };
 
 function SceneCopy({
@@ -142,6 +143,7 @@ function ScrubbedScene({
   playback = "ambient",
   layeredHero = false,
   objectPosition = "center center",
+  holdPosterOnScrubStart = false,
 }: VideoScrubSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const runwayVh = useResponsiveRunway(runwayDesktopVh, runwayMobileVh);
@@ -167,6 +169,7 @@ function ScrubbedScene({
   );
   const videoScale = useTransform(scrollYProgress, [0, 1], [1.04, 1]);
   const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "-2%"]);
+  const posterOpacity = useTransform(scrollYProgress, [0, 0.18, 0.34, 1], [1, 1, 0, 0]);
   const headlineOpacity = useTransform(scrollYProgress, [0.08, 0.24, 1], [0, 1, 1]);
   const headlineY = useTransform(scrollYProgress, [0.08, 0.24, 1], [24, 0, 0]);
   const subOpacity = useTransform(scrollYProgress, [0.2, 0.36, 1], [0, 1, 1]);
@@ -194,6 +197,19 @@ function ScrubbedScene({
           controls={false}
           style={isScrubbed ? { objectPosition } : { scale: videoScale, y: videoY, objectPosition }}
         />
+        {isScrubbed && holdPosterOnScrubStart && (
+          <motion.div className="absolute inset-0" style={{ opacity: posterOpacity }}>
+            <Image
+              src={posterStart}
+              alt=""
+              fill
+              priority={priority}
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition }}
+            />
+          </motion.div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
         {layeredHero ? (
           <div className="relative z-10 px-5 sm:px-7 md:px-12 pb-16 sm:pb-20 md:pb-20 will-change-transform">

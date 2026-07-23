@@ -184,6 +184,7 @@ export default function Home() {
         copyRevealStart={0.38}
         copyRevealEnd={0.68}
         objectPosition="48% center"
+        holdPosterOnScrubStart
       />
 
       <section className="bg-paper px-5 md:px-8 py-16 md:py-24">
