@@ -118,8 +118,9 @@ export default function Home() {
         sub="Ramos Cabinetry & Construction designs, builds, and installs custom cabinets, remodels, vanities, built-ins, and finish carpentry with Chris Ramos directly involved from measure to final fit."
         showCta
         priority
-        runwayDesktopVh={240}
-        runwayMobileVh={165}
+        runwayDesktopVh={155}
+        runwayMobileVh={115}
+        playback="ambient"
         copyRevealStart={0}
         copyRevealEnd={0.18}
       />
@@ -197,10 +198,11 @@ export default function Home() {
         eyebrow="The Build Scene"
         heading="Every Line Has to Land Before the Room Feels Finished"
         sub="Built-ins, vanities, shelves, doors, trim, and cabinet faces only feel calm when the hidden work is exact: level, scribed, joined, and installed with patience."
-        runwayDesktopVh={210}
-        runwayMobileVh={145}
-        copyRevealStart={0.36}
-        copyRevealEnd={0.62}
+        runwayDesktopVh={150}
+        runwayMobileVh={110}
+        playback="ambient"
+        copyRevealStart={0.14}
+        copyRevealEnd={0.34}
       />
 
       <section className="bg-paper-dim reveal-divider">

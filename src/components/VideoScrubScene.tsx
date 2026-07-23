@@ -22,6 +22,7 @@ type VideoScrubSceneProps = {
   runwayMobileVh?: number;
   copyRevealStart?: number;
   copyRevealEnd?: number;
+  playback?: "ambient" | "scrub";
 };
 
 function SceneCopy({
@@ -113,12 +114,14 @@ function ScrubbedScene({
   runwayMobileVh = 180,
   copyRevealStart = 0.55,
   copyRevealEnd = 0.85,
+  playback = "ambient",
 }: VideoScrubSceneProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const runwayVh = useResponsiveRunway(runwayDesktopVh, runwayMobileVh);
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end end"] });
   const videoRef = useScrollScrubbedVideo(scrollYProgress);
+  const isScrubbed = playback === "scrub";
 
   // Third keyframe pins the value through progress 1: framer-motion routes
   // 2-point scroll-linked opacity/transform through a native WAAPI
@@ -135,18 +138,24 @@ function ScrubbedScene({
     copyRevealStart <= 0 ? [0, 1] : [copyRevealStart, copyRevealEnd, 1],
     copyRevealStart <= 0 ? [0, 0] : [24, 0, 0],
   );
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1.04, 1]);
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "-2%"]);
 
   return (
     <div ref={containerRef} style={{ position: "relative", height: `${runwayVh}vh` }}>
       <div className="sticky top-0 h-screen h-dvh overflow-hidden isolate flex flex-col justify-end">
-        <video
-          ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
+        <motion.video
+          ref={isScrubbed ? videoRef : undefined}
+          className="absolute inset-0 w-full h-[104%] object-cover"
           src={videoSrc}
           poster={posterStart}
           muted
           playsInline
           preload="auto"
+          autoPlay={!isScrubbed}
+          loop={!isScrubbed}
+          controls={false}
+          style={{ scale: videoScale, y: videoY }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-walnut/85 via-walnut/10 to-walnut/40" />
         <motion.div
