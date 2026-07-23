@@ -32,15 +32,12 @@ export function useResponsiveRunway(desktopVh: number, mobileVh: number) {
 export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = true, maxProgress = 1) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const durationRef = useRef(0);
-  const targetTimeRef = useRef(0);
-  const currentTimeRef = useRef(0);
+  const targetProgressRef = useRef(0);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!enabled || !video) return;
-
-    let mounted = true;
 
     video.muted = true;
     video.defaultMuted = true;
@@ -49,45 +46,35 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
 
-    const seekToCurrentTarget = () => {
+    const applyFrame = () => {
       const duration = durationRef.current;
-      if (!duration) return;
-      const cappedProgress = Math.min(Math.max(progress.get(), 0), 1) * maxProgress;
-      targetTimeRef.current = cappedProgress * duration;
-      currentTimeRef.current = video.currentTime || targetTimeRef.current;
+      const video = videoRef.current;
+      if (!video || !duration) return;
+
+      const targetTime = Math.min(Math.max(targetProgressRef.current, 0), 1) * maxProgress * duration;
       try {
-        video.currentTime = currentTimeRef.current;
+        if (Math.abs(video.currentTime - targetTime) > 0.003) {
+          video.currentTime = targetTime;
+        }
       } catch {
-        // Keep the poster visible until the decoder accepts the first seek.
+        // Mobile decoders can reject seeks during warmup; next scroll frame retries.
       }
+    };
+
+    const queueFrame = () => {
+      if (rafRef.current) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        applyFrame();
+      });
     };
 
     const onLoaded = () => {
       if (Number.isFinite(video.duration) && video.duration > 0) {
         durationRef.current = video.duration;
-        seekToCurrentTarget();
+        targetProgressRef.current = progress.get();
+        queueFrame();
       }
-    };
-
-    const tick = () => {
-      if (!mounted) return;
-
-      const video = videoRef.current;
-      const duration = durationRef.current;
-      if (video && duration) {
-        const nextTime = currentTimeRef.current + (targetTimeRef.current - currentTimeRef.current) * 0.18;
-        currentTimeRef.current = Math.abs(targetTimeRef.current - nextTime) < 0.012 ? targetTimeRef.current : nextTime;
-
-        try {
-          if (Math.abs(video.currentTime - currentTimeRef.current) > 0.004) {
-            video.currentTime = currentTimeRef.current;
-          }
-        } catch {
-          // Mobile decoders can reject a frame while warming; the next rAF retries.
-        }
-      }
-
-      rafRef.current = requestAnimationFrame(tick);
     };
 
     video.addEventListener("loadedmetadata", onLoaded);
@@ -101,10 +88,8 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
     }
 
     if (video.readyState >= 1) onLoaded();
-    rafRef.current = requestAnimationFrame(tick);
 
     return () => {
-      mounted = false;
       video.removeEventListener("loadedmetadata", onLoaded);
       video.removeEventListener("durationchange", onLoaded);
       video.removeEventListener("canplay", onLoaded);
@@ -114,9 +99,22 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = 
 
   useMotionValueEvent(progress, "change", (value) => {
     if (!enabled) return;
-    const duration = durationRef.current;
-    if (!duration) return;
-    targetTimeRef.current = Math.min(Math.max(value, 0), 1) * maxProgress * duration;
+    targetProgressRef.current = value;
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      const video = videoRef.current;
+      const duration = durationRef.current;
+      if (!video || !duration) return;
+      const targetTime = Math.min(Math.max(targetProgressRef.current, 0), 1) * maxProgress * duration;
+      try {
+        if (Math.abs(video.currentTime - targetTime) > 0.003) {
+          video.currentTime = targetTime;
+        }
+      } catch {
+        // Mobile decoders can reject seeks during warmup; next scroll frame retries.
+      }
+    });
   });
 
   return videoRef;
