@@ -198,11 +198,11 @@ export default function Home() {
         eyebrow="The Build Scene"
         heading="Every Line Has to Land Before the Room Feels Finished"
         sub="Built-ins, vanities, shelves, doors, trim, and cabinet faces only feel calm when the hidden work is exact: level, scribed, joined, and installed with patience."
-        runwayDesktopVh={150}
-        runwayMobileVh={110}
-        playback="ambient"
-        copyRevealStart={0.14}
-        copyRevealEnd={0.34}
+        runwayDesktopVh={220}
+        runwayMobileVh={165}
+        playback="scrub"
+        copyRevealStart={0.42}
+        copyRevealEnd={0.72}
       />
 
       <section className="bg-paper-dim reveal-divider">
