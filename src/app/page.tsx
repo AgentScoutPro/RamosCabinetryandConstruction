@@ -119,7 +119,7 @@ export default function Home() {
         showCta
         priority
         runwayDesktopVh={220}
-        runwayMobileVh={175}
+        runwayMobileVh={285}
         playback="scrub"
         copyRevealStart={0}
         copyRevealEnd={0.18}

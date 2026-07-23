@@ -37,7 +37,7 @@ export function useResponsiveRunway(desktopVh: number, mobileVh: number) {
  * the scroll subscription driven by useMotionValueEvent (already
  * rAF-batched) rather than a manual scroll listener.
  */
-export function useScrollScrubbedVideo(progress: MotionValue<number>) {
+export function useScrollScrubbedVideo(progress: MotionValue<number>, enabled = true) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const durationRef = useRef(0);
   const latestProgressRef = useRef(0);
@@ -45,7 +45,7 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>) {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!enabled || !video) return;
 
     video.muted = true;
     video.defaultMuted = true;
@@ -107,9 +107,10 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>) {
       video.removeEventListener("canplay", onLoaded);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [enabled]);
 
   useMotionValueEvent(progress, "change", (value) => {
+    if (!enabled) return;
     latestProgressRef.current = value;
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
@@ -117,6 +118,15 @@ export function useScrollScrubbedVideo(progress: MotionValue<number>) {
       const duration = durationRef.current;
       if (!video || !duration) return;
       const targetTime = Math.min(Math.max(value, 0), 1) * duration;
+      try {
+        if (typeof video.fastSeek === "function") {
+          video.fastSeek(targetTime);
+          return;
+        }
+      } catch {
+        // Safari can throw while a video is still becoming seekable; fall back below.
+      }
+
       try {
         video.currentTime = targetTime;
       } catch {
