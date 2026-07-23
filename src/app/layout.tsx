@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     template: `%s | ${business.shortName}`,
   },
   description:
-    "Custom cabinetry, kitchen and bathroom remodeling, and finish carpentry for Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix. Family-owned, licensed, bonded & insured, ROC #364821.",
+    "Custom cabinetry, kitchen and bathroom remodeling, and finish carpentry for Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix. Family owned, licensed, bonded & insured, ROC #364821.",
   openGraph: {
     title: `${business.shortName} | Custom Cabinets & Remodeling`,
     description:
-      "Family-owned custom cabinetry and remodeling serving the East Valley. Licensed, bonded & insured, ROC #364821.",
+      "Family owned custom cabinetry and remodeling serving the East Valley. Licensed, bonded & insured, ROC #364821.",
     url: business.domain,
     siteName: business.shortName,
     locale: "en_US",

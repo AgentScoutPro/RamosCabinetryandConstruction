@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="What We Build"
         title="Services"
-        sub="Custom cabinetry and carpentry services for East Valley homeowners, built and installed in-house."
+        sub="Custom cabinetry and carpentry services for East Valley homeowners, built and installed in house."
       />
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24">

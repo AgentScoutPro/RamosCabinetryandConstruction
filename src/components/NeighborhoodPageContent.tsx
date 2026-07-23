@@ -21,7 +21,7 @@ export default function NeighborhoodPageContent({ slug }: { slug: string }) {
       <PageHero
         eyebrow={`${n.cityName}, AZ · ${n.angle}`}
         title={`Custom Cabinets & Remodeling in ${n.name}`}
-        sub={`Cabinetry and finish carpentry built for ${n.name}'s ${n.angle.toLowerCase()}, not generic builder-grade replacements.`}
+        sub={`Cabinetry and finish carpentry built for ${n.name}'s ${n.angle.toLowerCase()}, not generic builder grade replacements.`}
       />
       <TrustBar />
 
@@ -39,7 +39,7 @@ export default function NeighborhoodPageContent({ slug }: { slug: string }) {
             <ul className="mt-6 space-y-4">
               {n.focusAreas.map((f) => (
                 <li key={f} className="flex gap-3 border-t border-line pt-4 text-charcoal/75">
-                  <span className="text-brass shrink-0">—</span>
+                  <span className="text-brass shrink-0">•</span>
                   {f}
                 </li>
               ))}
@@ -106,7 +106,7 @@ export default function NeighborhoodPageContent({ slug }: { slug: string }) {
             },
             {
               q: "Do you offer free estimates?",
-              a: "Yes. Call 480-358-8607 or request one online and we'll schedule an in-home consultation.",
+              a: "Yes. Call (480) 358 8607 or request one online and we'll schedule an in home consultation.",
             },
             {
               q: "Are you licensed, bonded, and insured?",

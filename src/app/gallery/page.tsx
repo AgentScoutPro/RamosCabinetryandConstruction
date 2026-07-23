@@ -46,7 +46,7 @@ export default function GalleryPage() {
 
       <CTABand
         heading="Have a Project in Mind?"
-        sub="See what a custom-built approach could look like in your own kitchen, bathroom, or living space."
+        sub="See what a custom built approach could look like in your own kitchen, bathroom, or living space."
       />
     </>
   );

@@ -4,9 +4,9 @@ import { business, projects } from "@/lib/site-data";
 import { PageHero, CTABand, Eyebrow, TrustBar } from "@/components/Sections";
 
 export const metadata: Metadata = {
-  title: "About Chris Ramos | Family-Owned Cabinetry & Construction",
+  title: "About Chris Ramos | Family Owned Cabinetry & Construction",
   description:
-    "Meet Chris Ramos, with 15+ years of hands-on carpentry experience building custom cabinetry and remodeling projects across Tempe and the East Valley.",
+    "Meet Chris Ramos, with 15+ years of hands on carpentry experience building custom cabinetry and remodeling projects across Tempe and the East Valley.",
 };
 
 export default function AboutPage() {
@@ -14,7 +14,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="Our Story"
-        title="Family-Owned. Hands-On. Built Around Craft."
+        title="Family Owned. Hands On. Built Around Craft."
         sub="Ramos Cabinetry & Construction was built on the idea that the person designing your project should be the same person building it."
       />
       <TrustBar />
@@ -39,7 +39,7 @@ export default function AboutPage() {
         <div className="md:col-span-7 md:col-start-6">
           <Eyebrow>The Ramos Story</Eyebrow>
           <h2 className="font-display text-3xl md:text-4xl mt-4 reveal-line">
-            Fifteen-Plus Years of Getting the Joinery Right
+            More Than Fifteen Years of Getting the Joinery Right
           </h2>
           <div className="mt-8 space-y-5 text-charcoal/70 leading-relaxed text-lg">
             <p>
@@ -48,14 +48,14 @@ export default function AboutPage() {
               designed, and finished by hand, not pulled from a warehouse catalog.
             </p>
             <p>
-              After more than fifteen years of hands-on carpentry work across the East Valley,
+              After more than fifteen years of hands on carpentry work across the East Valley,
               that philosophy hasn&apos;t changed. Every project, whether it&apos;s a single custom
               vanity or a full kitchen remodel, gets the same level of attention: careful
               measuring, honest recommendations, and finish work that&apos;s built to last.
             </p>
             <p>
-              Ramos Cabinetry &amp; Construction is family-owned and stays intentionally
-              hands-on. Chris is directly involved in design and build on every job, not
+              Ramos Cabinetry &amp; Construction is family owned and stays intentionally
+              hands on. Chris is directly involved in design and build on every job, not
               managing from a distance, and not handing your project off to a rotating crew.
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
             {[
               {
                 title: "Measure Twice",
-                body: "Every project starts with an in-home consultation and careful measurement. No guesswork, no generic sizing.",
+                body: "Every project starts with an in home consultation and careful measurement. No guesswork, no generic sizing.",
               },
               {
                 title: "Build to Last",
@@ -101,7 +101,7 @@ export default function AboutPage() {
 
       <CTABand
         heading="Let's Talk About Your Project"
-        sub="Reach out for a free, no-pressure estimate and see what custom cabinetry could look like in your home."
+        sub="Reach out for a free, no pressure estimate and see what custom cabinetry could look like in your home."
       />
     </>
   );

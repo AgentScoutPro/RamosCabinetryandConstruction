@@ -12,7 +12,7 @@ export default function Footer() {
             Cabinetry &amp; Construction
           </div>
           <p className="mt-4 text-sm leading-relaxed text-cream/60">
-            Family-owned custom cabinetry, carpentry, and remodeling serving the East Valley since day one.
+            Family owned custom cabinetry, carpentry, and remodeling serving the East Valley since day one.
           </p>
           <a href={business.phoneHref} className="block mt-4 text-sm text-cream hover:text-brass-light transition-colors">
             {business.phone}
@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="mt-6 flex flex-wrap items-center gap-6">
             <Image
               src="/images/trust/ramos-trust-badge.svg"
-              alt="Licensed, Bonded & Insured — C Ramos Cabinetry and Construction, ROC #364821"
+              alt="Licensed, Bonded & Insured, C Ramos Cabinetry and Construction, ROC #364821"
               width={80}
               height={80}
               loading="lazy"

@@ -5,7 +5,7 @@ import { PageHero, Eyebrow } from "@/components/Sections";
 export const metadata: Metadata = {
   title: "Contact & Free Estimate | Ramos Cabinetry & Construction",
   description:
-    "Request a free estimate from Ramos Cabinetry & Construction. Call 480-358-8607 or send your project details online. Serving Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix.",
+    "Request a free estimate from Ramos Cabinetry & Construction. Call (480) 358 8607 or send your project details online. Serving Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix.",
 };
 
 export default function ContactPage() {
@@ -14,7 +14,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Get In Touch"
         title="Let's Talk About Your Project"
-        sub="Call, email, or send a few details below. We'll follow up within one business day to schedule your free, in-home estimate."
+        sub="Call, email, or send a few details below. We'll follow up within one business day to schedule your free, in home estimate."
       />
 
       <section className="mx-auto max-w-7xl px-5 md:px-8 py-24 grid md:grid-cols-12 gap-14">
@@ -104,8 +104,8 @@ export default function ContactPage() {
               <select id="timeline" name="timeline"
                 className="w-full border border-line bg-paper px-4 py-3 text-charcoal focus:border-brass outline-none transition-colors">
                 <option>As soon as possible</option>
-                <option>Within 1–3 months</option>
-                <option>3–6 months</option>
+                <option>Within 1 to 3 months</option>
+                <option>3 to 6 months</option>
                 <option>Just exploring options</option>
               </select>
             </div>

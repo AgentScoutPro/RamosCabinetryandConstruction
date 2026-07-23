@@ -73,7 +73,7 @@ export default async function ServiceDetailPage({
             <ul className="mt-5 space-y-3">
               {service.included.map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-charcoal/75">
-                  <span className="text-brass shrink-0">—</span>
+                  <span className="text-brass shrink-0">•</span>
                   {item}
                 </li>
               ))}

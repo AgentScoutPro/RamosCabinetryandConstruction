@@ -10,14 +10,14 @@ import VideoScrubScene from "@/components/VideoScrubScene";
 export const metadata: Metadata = {
   title: "Custom Cabinets & Remodeling in Phoenix & East Valley, AZ | C Ramos Cabinetry",
   description:
-    "Family-owned custom cabinet & remodeling contractor serving Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix. Licensed, bonded & insured. Free estimates — call (480) 358-8607.",
+    "Family owned custom cabinet & remodeling contractor serving Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix. Licensed, bonded & insured. Free estimates. Call (480) 358 8607.",
   alternates: {
     canonical: "https://cramoscabinetry.com/",
   },
   openGraph: {
     title: "Custom Cabinets & Remodeling in Phoenix & East Valley, AZ",
     description:
-      "Family-owned cabinetry & remodeling craftsmanship for Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix. Licensed ROC — free estimates.",
+      "Family owned cabinetry & remodeling craftsmanship for Tempe, Gilbert, Mesa, Chandler, Scottsdale & Phoenix. Licensed ROC with free estimates.",
     type: "website",
     url: "https://cramoscabinetry.com/",
     images: [
@@ -51,7 +51,7 @@ const homeFaqs = [
   },
   {
     q: "Do you offer free estimates?",
-    a: "Yes. Every project starts with a free, in-home or virtual estimate.",
+    a: "Yes. Every project starts with a free, in home or virtual estimate.",
   },
   {
     q: "Are you licensed and insured?",
@@ -66,8 +66,8 @@ const homeFaqs = [
     a: "Most kitchen remodels take a few weeks depending on scope; timelines are confirmed during your estimate.",
   },
   {
-    q: "Do you build custom or semi-custom cabinets?",
-    a: "Both. We build fully custom cabinetry as well as semi-custom options to fit a range of budgets and timelines.",
+    q: "Do you build custom or semi custom cabinets?",
+    a: "Both. We build fully custom cabinetry as well as semi custom options to fit a range of budgets and timelines.",
   },
 ];
 
@@ -85,11 +85,11 @@ const faqJsonLd = {
 };
 
 const serviceDescriptions: Record<string, string> = {
-  "custom-cabinets": "Custom and semi-custom cabinetry for kitchens, bathrooms, and built-ins.",
+  "custom-cabinets": "Custom and semi custom cabinetry for kitchens, bathrooms, and built ins.",
   "kitchen-remodeling": "Full kitchen remodels focused on layout, storage, and finish quality.",
   "bathroom-remodeling": "Vanities, cabinetry, and finish carpentry for cleaner, more functional bathrooms.",
   "cabinet-installation": "Precision installation, hardware, and repair for new or existing cabinetry.",
-  "finish-carpentry": "Trim, built-ins, mantels, shiplap, wainscoting, and detail carpentry.",
+  "finish-carpentry": "Trim, built ins, mantels, shiplap, wainscoting, and detail carpentry.",
   "home-remodeling": "Broader residential remodeling and construction projects.",
 };
 
@@ -104,7 +104,7 @@ const serviceImages: Record<string, Project> = {
 
 const whyChoose = [
   {
-    title: "Family-Owned, Directly Overseen",
+    title: "Family Owned, Directly Overseen",
     body: "Chris Ramos personally manages every project.",
   },
   {
@@ -113,10 +113,10 @@ const whyChoose = [
   },
   {
     title: "Licensed, Bonded & Insured",
-    body: "ROC-licensed with full insurance coverage.",
+    body: "Licensed through the Arizona ROC with full insurance coverage.",
   },
   {
-    title: "Custom & Semi-Custom Options",
+    title: "Custom & Semi Custom Options",
     body: "Cabinetry built to fit the home and budget.",
   },
   {
@@ -139,17 +139,17 @@ export default function Home() {
         posterStart="/videos/ramos-v2/hero-v2-poster-start.jpg"
         posterFinal="/videos/ramos-v2/hero-v2-poster-final.jpg"
         posterAlt="Warm wood grain transforming into Ramos custom cabinetry craftsmanship"
-        eyebrow="Family-Owned Custom Cabinetry & Remodeling — Serving Tempe & the East Valley"
+        eyebrow="Family Owned Custom Cabinetry & Remodeling Serving Tempe & the East Valley"
         heading="Custom Cabinets & Home Remodeling for Phoenix and East Valley Homes"
-        sub="C Ramos Cabinetry and Construction LLC builds custom cabinets, kitchen remodels, bathroom upgrades, and finish carpentry with the kind of craftsmanship homeowners notice in every detail. Family-owned and personally overseen by Chris Ramos, we serve Tempe, Gilbert, Mesa, Chandler, Scottsdale, and the surrounding East Valley."
+        sub="C Ramos Cabinetry and Construction LLC builds custom cabinets, kitchen remodels, bathroom upgrades, and finish carpentry with the kind of craftsmanship homeowners notice in every detail. Family owned and personally overseen by Chris Ramos, we serve Tempe, Gilbert, Mesa, Chandler, Scottsdale, and the surrounding East Valley."
         showCta
         primaryCtaLabel="Get a Free Estimate"
-        secondaryCtaLabel="Call (480) 358-8607"
+        secondaryCtaLabel="Call (480) 358 8607"
         trustItems={[
           "Licensed, Bonded & Insured",
           "ROC #364821",
-          "Family-Owned",
-          "16+ Five-Star Reviews",
+          "Family Owned",
+          "16+ Five Star Reviews",
         ]}
         priority
         runwayDesktopVh={280}
@@ -168,7 +168,7 @@ export default function Home() {
         posterAlt="Actual Ramos project cabinetry scroll animation showing the first cut and assembly"
         eyebrow="Custom Cabinetry and Remodeling Built Around the Way You Live"
         heading="Custom Cabinetry and Remodeling Built Around the Way You Live"
-        sub="For over 15 years, C Ramos Cabinetry and Construction has helped East Valley homeowners turn kitchens, bathrooms, and everyday living spaces into rooms that work as beautifully as they look. As a family-owned company, every project is personally overseen by Chris Ramos — from the first measurement to the final soft-close hinge."
+        sub="For over 15 years, C Ramos Cabinetry and Construction has helped East Valley homeowners turn kitchens, bathrooms, and everyday living spaces into rooms that work as beautifully as they look. As a family owned company, every project is personally overseen by Chris Ramos from the first measurement to the final soft close hinge."
         runwayDesktopVh={260}
         runwayMobileVh={190}
         playback="scrub"
@@ -182,8 +182,8 @@ export default function Home() {
           <p className="max-w-4xl text-lg leading-relaxed text-charcoal/70">
             For over 15 years, C Ramos Cabinetry and Construction has helped East Valley
             homeowners turn kitchens, bathrooms, and everyday living spaces into rooms that work
-            as beautifully as they look. As a family-owned company, every project is personally
-            overseen by Chris Ramos — from the first measurement to the final soft-close hinge.
+            as beautifully as they look. As a family owned company, every project is personally
+            overseen by Chris Ramos from the first measurement to the final soft close hinge.
             Whether it's a full custom cabinetry build, a{" "}
             <Link href="/services/kitchen-remodeling" className="text-brass underline underline-offset-4">
               kitchen remodel in Gilbert
@@ -209,7 +209,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="text-cream/62 max-w-md leading-relaxed">
-              Custom and semi-custom cabinetry, kitchen remodeling, bathroom upgrades,
+              Custom and semi custom cabinetry, kitchen remodeling, bathroom upgrades,
               installation, finish carpentry, and broader home remodeling for East Valley homes.
             </p>
           </div>
@@ -282,7 +282,7 @@ export default function Home() {
               </h2>
             </div>
             <p className="text-charcoal/62 max-w-md leading-relaxed">
-              Finished rooms, mid-install moments, raw material, and detail work all stay visible
+              Finished rooms, active installation moments, raw material, and detail work all stay visible
               because the process is part of the trust.
             </p>
           </div>
@@ -359,9 +359,9 @@ export default function Home() {
 
       <CTABand
         heading="Ready to Start Your Cabinetry or Remodeling Project?"
-        sub="Get a free, no-pressure estimate from a family-owned team that treats your home like their own. Serving Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix."
+        sub="Get a free, no pressure estimate from a family owned team that treats your home like their own. Serving Tempe, Gilbert, Mesa, Chandler, Scottsdale, and Phoenix."
         primaryLabel="Get a Free Estimate"
-        secondaryLabel="Call (480) 358-8607"
+        secondaryLabel="Call (480) 358 8607"
       />
     </>
   );

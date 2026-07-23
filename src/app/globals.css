@@ -41,7 +41,7 @@ body {
   font-family: var(--font-fraunces);
 }
 
-/* Reveal line — signature motif referencing the shadow-line/reveal detail on flat-panel cabinet doors */
+/* Reveal line motif referencing the shadow line detail on flat panel cabinet doors */
 .reveal-line::after {
   content: "";
   display: block;
