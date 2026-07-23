@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import type { Project } from "@/lib/site-data";
-import { business, cityPages, projects, services } from "@/lib/site-data";
+import type { ProjectGalleryImage } from "@/lib/project-gallery";
+import { business, cityPages, services } from "@/lib/site-data";
+import { projectGallery } from "@/lib/project-gallery";
 import { CTABand, Eyebrow, FAQAccordion } from "@/components/Sections";
 import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import VideoScrubScene from "@/components/VideoScrubScene";
@@ -35,13 +36,21 @@ export const metadata: Metadata = {
   },
 };
 
+function galleryImage(slug: string) {
+  const image = projectGallery.find((project) => project.slug === slug);
+  if (!image) {
+    throw new Error(`Missing homepage gallery image: ${slug}`);
+  }
+  return image;
+}
+
 const featuredGallery = [
-  projects[0],
-  projects[1],
-  projects[2],
-  projects[3],
-  projects[4],
-  projects[6],
+  galleryImage("ramos-kitchen-remodeling-scottsdale-east-valley-az-077"),
+  galleryImage("ramos-wet-bar-built-ins-gilbert-east-valley-az-134"),
+  galleryImage("ramos-laundry-room-cabinets-tempe-east-valley-az-121"),
+  galleryImage("ramos-built-ins-phoenix-east-valley-az-048"),
+  galleryImage("ramos-bathroom-remodeling-chandler-east-valley-az-100"),
+  galleryImage("ramos-mudroom-built-ins-chandler-east-valley-az-106"),
 ];
 
 const homeFaqs = [
@@ -93,13 +102,13 @@ const serviceDescriptions: Record<string, string> = {
   "home-remodeling": "Broader residential remodeling and construction projects.",
 };
 
-const serviceImages: Record<string, Project> = {
-  "custom-cabinets": projects[0],
-  "kitchen-remodeling": projects[1],
-  "bathroom-remodeling": projects[4],
-  "cabinet-installation": projects[5],
-  "finish-carpentry": projects[2],
-  "home-remodeling": projects[3],
+const serviceImages: Record<string, ProjectGalleryImage> = {
+  "custom-cabinets": galleryImage("ramos-custom-cabinets-gilbert-east-valley-az-008"),
+  "kitchen-remodeling": galleryImage("ramos-kitchen-remodeling-tempe-east-valley-az-031"),
+  "bathroom-remodeling": galleryImage("ramos-bathroom-remodeling-gilbert-east-valley-az-098"),
+  "cabinet-installation": galleryImage("ramos-cabinet-installation-scottsdale-east-valley-az-071"),
+  "finish-carpentry": galleryImage("ramos-finish-carpentry-mesa-east-valley-az-003"),
+  "home-remodeling": galleryImage("ramos-home-remodeling-chandler-east-valley-az-064"),
 };
 
 const whyChoose = [
@@ -240,7 +249,7 @@ export default function Home() {
                 </div>
                 <div className="relative aspect-[4/3] md:aspect-auto min-h-52">
                   <Image
-                    src={serviceImages[s.slug]?.image ?? projects[0].image}
+                    src={serviceImages[s.slug]?.image ?? projectGallery[0].image}
                     alt={serviceImages[s.slug]?.alt ?? `${s.name} by C Ramos Cabinetry and Construction`}
                     fill
                     sizes={index === 0 ? "(max-width: 1024px) 100vw, 45vw" : "(max-width: 1024px) 100vw, 30vw"}
