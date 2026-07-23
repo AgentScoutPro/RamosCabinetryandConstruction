@@ -164,22 +164,6 @@ export default function Home() {
         objectPosition="center center"
       />
 
-      <VideoScrubScene
-        id="legacy"
-        videoSrc="/videos/ramos-v2/chapter-7-legacy-scroll.mp4"
-        posterStart="/videos/ramos-v2/chapter-7-poster-start.jpg"
-        posterFinal="/videos/ramos-v2/chapter-7-poster-final.jpg"
-        posterAlt="A finished Arizona home glowing at sunset with handcrafted cabinetry inside"
-        eyebrow="Chapter 07 · Legacy"
-        heading="Built to Be Lived In"
-        sub="The final chapter is not about selling. It is the feeling a homeowner has when the house is quiet, the work is finished, and every detail feels permanent."
-        runwayDesktopVh={250}
-        runwayMobileVh={185}
-        playback="scrub"
-        copyRevealStart={0.42}
-        copyRevealEnd={0.72}
-      />
-
       <section className="bg-walnut text-cream reveal-divider-dark">
         <div className="mx-auto max-w-7xl px-5 md:px-8 py-20 md:py-28">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
@@ -319,6 +303,22 @@ export default function Home() {
       <CTABand
         heading="Start With the Room You Want to Change"
         sub="Call for a free, no-pressure estimate, or send a few project details online and Chris will follow up within one business day."
+      />
+
+      <VideoScrubScene
+        id="legacy"
+        videoSrc="/videos/ramos-v2/chapter-7-legacy-scroll.mp4"
+        posterStart="/videos/ramos-v2/chapter-7-poster-start.jpg"
+        posterFinal="/videos/ramos-v2/chapter-7-poster-final.jpg"
+        posterAlt="A finished Arizona home glowing at sunset with handcrafted cabinetry inside"
+        eyebrow="Chapter 07 · Legacy"
+        heading="Built to Be Lived In"
+        sub="The final chapter is not about selling. It is the feeling a homeowner has when the house is quiet, the work is finished, and every detail feels permanent."
+        runwayDesktopVh={250}
+        runwayMobileVh={185}
+        playback="scrub"
+        copyRevealStart={0.42}
+        copyRevealEnd={0.72}
       />
     </>
   );
